@@ -1074,11 +1074,11 @@ export class Bladeburner {
         switch (action.name) {
           case BladeburnerGeneralActionName.Training: {
             this.stamina -= 0.5 * BladeburnerConstants.BaseStaminaLoss;
-            const strExpGain = 30 * person.mults.strength_exp,
-              defExpGain = 30 * person.mults.defense_exp,
-              dexExpGain = 30 * person.mults.dexterity_exp,
-              agiExpGain = 30 * person.mults.agility_exp,
-              staminaGain = 0.04 * this.getSkillMult(BladeburnerMultName.Stamina);
+            const strExpGain = 30,
+              defExpGain = 30,
+              dexExpGain = 30,
+              agiExpGain = 30,
+              staminaGain = 0.04;
             retValue.strExp = strExpGain;
             retValue.defExp = defExpGain;
             retValue.dexExp = dexExpGain;
@@ -1088,15 +1088,17 @@ export class Bladeburner {
               this.log(
                 `${person.whoAmI()}: ` +
                   "Training completed. Gained: " +
-                  formatExp(strExpGain) +
+                  formatExp(strExpGain * person.mults.strength_exp) +
                   " str exp, " +
-                  formatExp(defExpGain) +
+                  formatExp(defExpGain * person.mults.defense_exp) +
                   " def exp, " +
-                  formatExp(dexExpGain) +
+                  formatExp(dexExpGain * person.mults.dexterity_exp) +
                   " dex exp, " +
-                  formatExp(agiExpGain) +
+                  formatExp(agiExpGain * person.mults.agility_exp) +
                   " agi exp, " +
-                  formatBigNumber(staminaGain) +
+                  formatBigNumber(
+                    staminaGain * this.getSkillMult(BladeburnerMultName.Stamina) * person.mults.bladeburner_max_stamina,
+                  ) +
                   " max stamina.",
               );
             }
