@@ -38,7 +38,7 @@ import { formatTime } from "../utils/helpers/formatTime";
 import { joinFaction } from "../Faction/FactionHelpers";
 import { isSleeveInfiltrateWork } from "../PersonObjects/Sleeve/Work/SleeveInfiltrateWork";
 import { isSleeveSupportWork } from "../PersonObjects/Sleeve/Work/SleeveSupportWork";
-import { WorkStats, newWorkStats } from "../Work/WorkStats";
+import { WorkStats, newWorkStats, multWorkStats } from "../Work/WorkStats";
 import { getEnumHelper } from "../utils/EnumHelper";
 import { PartialRecord, createEnumKeyedRecord, getRecordEntries } from "../Types/Record";
 import { createContracts, loadContractsData } from "./data/Contracts";
@@ -1084,22 +1084,21 @@ export class Bladeburner {
             retValue.dexExp = dexExpGain;
             retValue.agiExp = agiExpGain;
             this.staminaBonus += staminaGain;
+
+            // retValue contains the base EXP gains.
+            // Multiply by player EXP multipliers to predict the effective gain.
+            const effectiveGainPrediction = multWorkStats(retValue, person.mults);
+            // Predict effective stamina gain after applying Skill and Augmentation multipliers.
+            let effectiveStaminaGainPrediction = staminaGain * this.getSkillMult(BladeburnerMultName.Stamina);
+            effectiveStaminaGainPrediction *= person.mults.bladeburner_max_stamina;
             if (this.logging.general) {
               this.log(
-                `${person.whoAmI()}: ` +
-                  "Training completed. Gained: " +
-                  formatExp(strExpGain * person.mults.strength_exp) +
-                  " str exp, " +
-                  formatExp(defExpGain * person.mults.defense_exp) +
-                  " def exp, " +
-                  formatExp(dexExpGain * person.mults.dexterity_exp) +
-                  " dex exp, " +
-                  formatExp(agiExpGain * person.mults.agility_exp) +
-                  " agi exp, " +
-                  formatBigNumber(
-                    staminaGain * this.getSkillMult(BladeburnerMultName.Stamina) * person.mults.bladeburner_max_stamina,
-                  ) +
-                  " max stamina.",
+                `${person.whoAmI()}: Training completed. Gained: ` +
+                  `${formatExp(effectiveGainPrediction.strExp)} str exp, ` +
+                  `${formatExp(effectiveGainPrediction.defExp)} def exp, ` +
+                  `${formatExp(effectiveGainPrediction.dexExp)} dex exp, ` +
+                  `${formatExp(effectiveGainPrediction.agiExp)} agi exp, ` +
+                  `${formatBigNumber(effectiveStaminaGainPrediction)} max stamina.`,
               );
             }
             break;
