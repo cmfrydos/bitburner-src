@@ -83,10 +83,10 @@ export const Skills: Record<BladeburnerSkillName, Skill> = {
   }),
   [BladeburnerSkillName.CybersEdge]: new Skill({
     name: BladeburnerSkillName.CybersEdge,
-    desc: "Each level of this skill increases your max stamina by 2%",
+    desc: "Each level of this skill increases your max stamina by 5%",
     baseCost: 1,
     costInc: 3,
-    mults: { [BladeburnerMultName.Stamina]: 2 },
+    mults: { [BladeburnerMultName.Stamina]: 5 },
   }),
   [BladeburnerSkillName.HandsOfMidas]: new Skill({
     name: BladeburnerSkillName.HandsOfMidas,
