@@ -1085,13 +1085,13 @@ export class Bladeburner {
             retValue.agiExp = agiExpGain;
             this.staminaBonus += staminaGain;
 
-            // retValue contains the base EXP gains.
-            // Multiply by person EXP multipliers to predict the effective gain.
-            const effectiveGainPrediction = multWorkStats(retValue, person.mults);
-            // Predict effective stamina gain after applying Skill and Augmentation multipliers.
-            let effectiveStaminaGainPrediction = staminaGain * this.getSkillMult(BladeburnerMultName.Stamina);
-            effectiveStaminaGainPrediction *= person.mults.bladeburner_max_stamina;
             if (this.logging.general) {
+              // retValue contains the base EXP gains.
+              // Multiply by person EXP multipliers to predict the effective gain.
+              const effectiveGainPrediction = multWorkStats(retValue, person.mults);
+              // Predict effective stamina gain after applying Skill and Augmentation multipliers.
+              let effectiveStaminaGainPrediction = staminaGain * this.getSkillMult(BladeburnerMultName.Stamina);
+              effectiveStaminaGainPrediction *= person.mults.bladeburner_max_stamina;
               this.log(
                 `${person.whoAmI()}: Training completed. Gained: ` +
                   `${formatExp(effectiveGainPrediction.strExp)} str exp, ` +
@@ -1124,10 +1124,10 @@ export class Bladeburner {
             const rankGain = 0.1 * currentNodeMults.BladeburnerRank;
             this.changeRank(person, rankGain);
 
-            // retValue contains the base EXP gains.
-            // Multiply by person EXP multipliers to predict the effective gain.
-            const effectiveGainPrediction = multWorkStats(retValue, person.mults);
             if (this.logging.general) {
+              // retValue contains the base EXP gains.
+              // Multiply by person EXP multipliers to predict the effective gain.
+              const effectiveGainPrediction = multWorkStats(retValue, person.mults);
               this.log(
                 `${person.whoAmI()}: ` +
                   `Field analysis completed. Gained ${formatBigNumber(rankGain)} rank, ` +
