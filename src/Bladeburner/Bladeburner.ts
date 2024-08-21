@@ -1086,7 +1086,7 @@ export class Bladeburner {
             this.staminaBonus += staminaGain;
 
             // retValue contains the base EXP gains.
-            // Multiply by player EXP multipliers to predict the effective gain.
+            // Multiply by person EXP multipliers to predict the effective gain.
             const effectiveGainPrediction = multWorkStats(retValue, person.mults);
             // Predict effective stamina gain after applying Skill and Augmentation multipliers.
             let effectiveStaminaGainPrediction = staminaGain * this.getSkillMult(BladeburnerMultName.Stamina);
@@ -1113,22 +1113,26 @@ export class Bladeburner {
             if (isNaN(eff) || eff < 0) {
               throw new Error("Field Analysis Effectiveness calculated to be NaN or negative");
             }
-            const hackingExpGain = 20 * person.mults.hacking_exp;
-            const charismaExpGain = 20 * person.mults.charisma_exp;
-            const rankGain = 0.1 * currentNodeMults.BladeburnerRank;
-            retValue.hackExp = hackingExpGain;
-            retValue.chaExp = charismaExpGain;
-            retValue.intExp = BladeburnerConstants.BaseIntGain;
-            this.changeRank(person, rankGain);
             this.getCurrentCity().improvePopulationEstimateByPercentage(
               eff * this.getSkillMult(BladeburnerMultName.SuccessChanceEstimate),
             );
+            const hackingExpGain = 20;
+            const charismaExpGain = 20;
+            retValue.hackExp = hackingExpGain;
+            retValue.chaExp = charismaExpGain;
+            retValue.intExp = BladeburnerConstants.BaseIntGain;
+            const rankGain = 0.1 * currentNodeMults.BladeburnerRank;
+            this.changeRank(person, rankGain);
+
+            // retValue contains the base EXP gains.
+            // Multiply by person EXP multipliers to predict the effective gain.
+            const effectiveGainPrediction = multWorkStats(retValue, person.mults);
             if (this.logging.general) {
               this.log(
                 `${person.whoAmI()}: ` +
                   `Field analysis completed. Gained ${formatBigNumber(rankGain)} rank, ` +
-                  `${formatExp(hackingExpGain)} hacking exp, and ` +
-                  `${formatExp(charismaExpGain)} charisma exp.`,
+                  `${formatExp(effectiveGainPrediction.hackExp)} hacking exp, and ` +
+                  `${formatExp(effectiveGainPrediction.chaExp)} charisma exp.`,
               );
             }
             break;
