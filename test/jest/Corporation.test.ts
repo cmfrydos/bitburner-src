@@ -449,7 +449,7 @@ describe("Division", () => {
         warehouse.updateMaterialSizeUsed();
         expect(warehouse.sizeUsed).toBeGreaterThan(80);
         expect(warehouse.sizeUsed).toBeLessThan(90);
-        
+
         expect(simulateUntilSmartBuyActed(divisionChem)).toBe(1); // will consume after 1 cycle
       });
 
