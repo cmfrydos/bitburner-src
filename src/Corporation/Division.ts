@@ -345,7 +345,7 @@ export class Division {
         case "PRODUCTION":
           /* Process production of materials */
           if (this.producedMaterials.length > 0) {
-            // Ann.: This causes the production limit of the first material to be used for all materials 
+            // Ann.: This causes the production limit of the first material to be used for all materials
             const mat = warehouse.materials[this.producedMaterials[0]];
             //Calculate the maximum production of this material based
             const maxProd =
