@@ -456,7 +456,6 @@ export class Division {
             //If this doesn't produce any materials, then it only creates
             //Products. Creating products will consume materials. The
             //Production of all consumed materials must be set to 0
-            //Ann: This seems odd
             for (const reqMatName of getRecordKeys(this.requiredMaterials)) {
               warehouse.materials[reqMatName].productionAmount = 0;
             }

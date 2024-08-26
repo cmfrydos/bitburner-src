@@ -26,7 +26,8 @@ function getSmartSupplyUsableMaterial(warehouse: Warehouse, mname: CorpMaterialN
   const material = warehouse.materials[mname];
   let amount = 0;
   if (supplyOption === "imports") {
-    amount = material.importAmount * passedSeconds;
+    // Use atleast the amount of materials that are being stored, but no more than the amount that is being imported.
+    amount = Math.min(material.importAmount * passedSeconds, material.stored);
   } else if (supplyOption === "leftovers") {
     amount = material.stored;
   }

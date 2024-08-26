@@ -411,6 +411,9 @@ describe("Division", () => {
         warehouse.materials["Food"].stored = 0;
         warehouse.materials["Plants"].importAmount = 1100 / corpConstants.secondsPerMarketCycle;
         warehouse.materials["Water"].importAmount = 550 / corpConstants.secondsPerMarketCycle;
+        warehouse.materials["Plants"].stored = 1100;
+        warehouse.materials["Water"].stored = 550;
+        warehouse.updateMaterialSizeUsed();
         expect(simulateUntilSmartBuyActed(divisionChem)).toBe(-1);
       });
 
@@ -421,6 +424,8 @@ describe("Division", () => {
         warehouse.materials["Food"].stored = 0;
         warehouse.materials["Plants"].importAmount = 1100 / corpConstants.secondsPerMarketCycle / 2;
         warehouse.materials["Water"].importAmount = 550 / corpConstants.secondsPerMarketCycle / 2;
+        warehouse.materials["Plants"].stored = 1100 / 2;
+        warehouse.materials["Water"].stored = 550 / 2;
         expect(simulateUntilSmartBuyActed(divisionChem)).toBe(cyclesNeeded);
       });
 
