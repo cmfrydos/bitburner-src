@@ -307,9 +307,10 @@ export class Division {
               mat.quality = Math.max(0.1, (mat.quality * mat.stored + 1 * buyAmt) / (mat.stored + buyAmt));
               mat.averagePrice = (mat.stored * mat.averagePrice + buyAmt * mat.marketPrice) / (mat.stored + buyAmt);
               mat.stored += buyAmt;
+              warehouse.updateMaterialSizeUsed();
+              return buyAmt * mat.marketPrice;
             }
-            warehouse.updateMaterialSizeUsed();
-            return buyAmt * mat.marketPrice;
+            return 0;
           };
 
           const getMaxProd = (office: OfficeSpace, forProduct: boolean) =>
@@ -455,6 +456,7 @@ export class Division {
             //If this doesn't produce any materials, then it only creates
             //Products. Creating products will consume materials. The
             //Production of all consumed materials must be set to 0
+            //Ann: This seems odd
             for (const reqMatName of getRecordKeys(this.requiredMaterials)) {
               warehouse.materials[reqMatName].productionAmount = 0;
             }

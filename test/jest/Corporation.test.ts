@@ -278,6 +278,8 @@ describe("Division", () => {
         // Simulate processing phases until something was bought
         for (let i = 0; i < maxFullCycles; i++) {
           while (corporation.state.nextName != "PURCHASE") {
+            expect(isNaN(division.thisCycleExpenses)).toBe(false);
+            expect(isNaN(division.thisCycleRevenue)).toBe(false);
             division.process(1, corporation);
             corporation.state.incrementState();
           }
