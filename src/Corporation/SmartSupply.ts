@@ -17,7 +17,7 @@ function normalize(ratios: RatioData[]): void {
   });
 }
 
-// This function calculates the amount of materials that shell be used for production.
+// This function calculates the volume of an input material that shell be used for production.
 // When the smart supply option is set to "imports", it returns the amount of materials that are being imported.
 // When the smart supply option is set to "leftovers", it returns the amount of materials that are already in the warehouse.
 // Otherwise, it returns 0.
@@ -117,16 +117,19 @@ export function smartSupply(
   let availableSpace = free + alreadyUsedByRequiredMaterials;
 
   // 2. Determine the ratios of all input materials.
-  const ratios: RatioData[] = Object.entries(requiredMaterials)
-    .filter(([__, amount]): boolean => amount !== undefined && amount !== 0)
-    .map(
-      ([matName, amount]): RatioData => ({
+  const ratios: RatioData[] = [];
+  for (const [matName, amount] of Object.entries(requiredMaterials)) {
+    if (amount !== undefined && amount !== 0) {
+      const ratioData: RatioData = {
         matName: matName as CorpMaterialName,
         ratio: (amount as number) * MaterialInfo[matName as CorpMaterialName].size,
-      }),
-    )
-    .concat([{ matName: null, ratio: averageOutSize } as RatioData]); // add some output space temporarily
-  normalize(ratios); // normalize, which yields the output ratio
+      };
+      ratios.push(ratioData);
+    }
+  }
+  // Add some output space temporarily
+  ratios.push({ matName: null, ratio: averageOutSize } as RatioData);
+  normalize(ratios); // Normalize, which yields the output ratio
 
   // When products require more space than their base materials, we need to reserve extra space.
   const outputRatio = ratios.pop()!.ratio;
