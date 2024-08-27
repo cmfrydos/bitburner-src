@@ -74,10 +74,11 @@ export function MaterialElem(props: IMaterialProps): React.ReactElement {
   }
 
   // Limit Production button
-  let limitMaterialButtonText = "Limit Material";
+  let limitProductionButtonText = "Limit Production";
   if (mat.productionLimit !== null) {
-    limitMaterialButtonText += " (" + formatCorpStat(mat.productionLimit) + ")";
+    limitProductionButtonText += " (" + formatCorpStat(mat.productionLimit) + ")";
   }
+  const showLimitButton = division.producedMaterials.includes(mat.name);
 
   // Material Gain details
   const gainBreakdown = [
@@ -158,9 +159,11 @@ export function MaterialElem(props: IMaterialProps): React.ReactElement {
             open={sellMaterialOpen}
             onClose={() => setSellMaterialOpen(false)}
           />
-          <Button color={tutorial ? "error" : "primary"} onClick={() => setLimitProductionOpen(true)}>
-            {limitMaterialButtonText}
-          </Button>
+          {showLimitButton && (
+            <Button color={tutorial ? "error" : "primary"} onClick={() => setLimitProductionOpen(true)}>
+              {limitProductionButtonText}
+            </Button>
+          )}
           <LimitMaterialProductionModal
             material={mat}
             open={limitProductionOpen}
