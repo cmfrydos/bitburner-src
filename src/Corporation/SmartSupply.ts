@@ -51,35 +51,34 @@ export function getProductionCapacity(
 
   let totalOutputProdVolume = 0;
   let totalProductProdVolume = 0;
-  let totalProd = 0;
+  let totalOutputProd = 0;
   let totalProductProd = 0;
 
   // Production limit is currently broken
   // The first lines are how it should be imo, but the third line is how it is currently in the game
-  // const getMatProductionLimit = (mat: CorpMaterialName) => warehouse.materials[mat].productionLimit ?? -1;
-  // const getMatProductionLimit = (mat: CorpMaterialName) => Math.min(...producedMaterials.map((mat) => warehouse.materials[mat].productionLimit!))
-  const getMatProductionLimit = (__: any) => warehouse.materials[producedMaterials[0]].productionLimit;
+  // const getMatProductionLimit = (mat: CorpMaterialName) => warehouse.materials[mat].productionLimit ?? Infinity;
+  // const getMatProductionLimit = (mat: CorpMaterialName) => Math.min(...producedMaterials.map((mat) => warehouse.materials[mat].productionLimit!)) ?? Infinity;
+  const getMatProductionLimit = (__: any) => warehouse.materials[producedMaterials[0]].productionLimit ?? Infinity;
+  const getProductProductionLimit = (product: Product) =>
+    product?.cityData[warehouse.city]?.productionLimit ?? Infinity;
 
-  for (let i = 0; i < producedMaterials.length; i++) {
-    const mat = producedMaterials[i];
-    const limit = Math.min(getMatProductionLimit(mat) ?? Infinity, prodMultOutput);
+  producedMaterials.forEach((mat) => {
+    const limit = Math.min(getMatProductionLimit(mat), prodMultOutput);
     totalOutputProdVolume += limit * MaterialInfo[mat].size;
-    totalProd += limit / producedMaterials.length; // output materials are produced together
-  }
+    totalOutputProd += limit / producedMaterials.length; // output materials are produced together
+  });
 
-  const getProductProductionLimit = (product: Product) => product?.cityData[warehouse.city]?.productionLimit;
-
-  for (const product of products.values()) {
+  products.forEach((product) => {
     if (product.finished) {
-      const limit = Math.min(getProductProductionLimit(product) ?? Infinity, prodMultProducts);
+      const limit = Math.min(getProductProductionLimit(product), prodMultProducts);
       totalProductProdVolume += limit * product.size;
       totalProductProd += limit;
     }
-  }
+  });
 
   // avg Out+Prod size = TotalVolume / TotalProduction
-  const averageSize = (totalOutputProdVolume + totalProductProdVolume) / (totalProd + totalProductProd);
-  return [averageSize, totalProd, totalProductProd];
+  const averageSize = (totalOutputProdVolume + totalProductProdVolume) / (totalOutputProd + totalProductProd);
+  return [averageSize, totalOutputProd, totalProductProd];
 }
 
 // Smart Supply Algorithm
