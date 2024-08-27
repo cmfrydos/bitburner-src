@@ -48,6 +48,7 @@ export function getProductionCapacity(
   if (prodMultOutput <= 0 || prodMultProducts <= 0) {
     return [0, 0, 0]; // should not happen
   }
+
   let totalOutputProdVolume = 0;
   let totalProductProdVolume = 0;
   let totalProd = 0;
@@ -57,26 +58,22 @@ export function getProductionCapacity(
   // The first lines are how it should be imo, but the third line is how it is currently in the game
   // const getMatProductionLimit = (mat: CorpMaterialName) => warehouse.materials[mat].productionLimit ?? -1;
   // const getMatProductionLimit = (mat: CorpMaterialName) => Math.min(...producedMaterials.map((mat) => warehouse.materials[mat].productionLimit!))
-  const getMatProductionLimit = (__: any) => warehouse.materials[producedMaterials[0]].productionLimit ?? -1;
+  const getMatProductionLimit = (__: any) => warehouse.materials[producedMaterials[0]].productionLimit;
 
   for (let i = 0; i < producedMaterials.length; i++) {
     const mat = producedMaterials[i];
-    const limit = getMatProductionLimit(mat) ?? -1;
-    const factor = limit < 0 ? 1 : limit / prodMultOutput;
-    totalOutputProdVolume += prodMultOutput * factor * MaterialInfo[mat].size;
-    totalProd += (prodMultOutput * factor) / producedMaterials.length; // output materials are produced together
+    const limit = Math.min(getMatProductionLimit(mat) ?? Infinity, prodMultOutput);
+    totalOutputProdVolume += limit * MaterialInfo[mat].size;
+    totalProd += limit / producedMaterials.length; // output materials are produced together
   }
 
-  const city = warehouse.city;
+  const getProductProductionLimit = (product: Product) => product?.cityData[warehouse.city]?.productionLimit;
+
   for (const product of products.values()) {
     if (product.finished) {
-      const limit =
-        product.cityData && product.cityData[city] && product.cityData[city].productionLimit
-          ? product.cityData[city].productionLimit!
-          : -1;
-      const factor = limit < 0 ? 1 : limit / prodMultProducts;
-      totalProductProdVolume += prodMultProducts * factor * product.size;
-      totalProductProd += prodMultProducts * factor;
+      const limit = Math.min(getProductProductionLimit(product) ?? Infinity, prodMultProducts);
+      totalProductProdVolume += limit * product.size;
+      totalProductProd += limit;
     }
   }
 
