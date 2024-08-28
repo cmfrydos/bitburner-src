@@ -163,6 +163,8 @@ export function MaterialElem(props: IMaterialProps): React.ReactElement {
           </Button>
           <LimitMaterialProductionModal
             material={mat}
+            division={division}
+            city={city}
             open={limitProductionOpen}
             onClose={() => setLimitProductionOpen(false)}
           />

@@ -408,7 +408,12 @@ export function NetscriptCorporation(): InternalAPI<NSCorporation> {
       const cityName = getEnumHelper("CityName").nsGetMember(ctx, _cityName);
       const materialName = getEnumHelper("CorpMaterialName").nsGetMember(ctx, _materialName, "materialName");
       const qty = helpers.number(ctx, "qty", _qty);
-      limitMaterialProduction(getMaterial(divisionName, cityName, materialName), qty);
+      limitMaterialProduction(
+        getMaterial(divisionName, cityName, materialName),
+        getDivision(divisionName),
+        cityName,
+        qty,
+      );
     },
     setMaterialMarketTA1: (ctx) => (_divisionName, _cityName, _materialName, _on) => {
       checkAccess(ctx, CorpUnlockName.WarehouseAPI);

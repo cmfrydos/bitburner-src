@@ -613,11 +613,19 @@ export function limitProductProduction(product: Product, cityName: CityName, qua
   }
 }
 
-export function limitMaterialProduction(material: Material, quantity: number): void {
-  if (quantity < 0 || isNaN(quantity)) {
-    material.productionLimit = null;
-  } else {
-    material.productionLimit = quantity;
+export function limitMaterialProduction(
+  material: Material,
+  division: Division,
+  cityName: CityName,
+  quantity: number,
+): void {
+  const limit = quantity < 0 || isNaN(quantity) ? null : quantity;
+  material.productionLimit = limit;
+  if (division.producedMaterials.includes(material.name)) {
+    // Set limit of all Materials to this amount, since they are produced together
+    for (const materialName of division.producedMaterials) {
+      division.warehouses[cityName]!.materials[materialName].productionLimit = quantity;
+    }
   }
 }
 
