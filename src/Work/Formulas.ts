@@ -1,6 +1,6 @@
 import { currentNodeMults } from "../BitNode/BitNodeMultipliers";
 import { Crime } from "../Crime/Crime";
-import { newWorkStats, scaleWorkStats, WorkStats, multWorkStats } from "./WorkStats";
+import { newWorkStats, scaleWorkStats, WorkStats, multWorkStats, multToWorkStats } from "./WorkStats";
 import { Person as IPerson } from "@nsdefs";
 import { CONSTANTS } from "../Constants";
 import { ClassType, FactionWorkType, LocationName } from "@enums";
@@ -68,8 +68,7 @@ export function calculateCrimeWorkStats(person: IPerson, crime: Crime): WorkStat
         chaExp: crime.charisma_exp,
         intExp: crime.intelligence_exp,
       }),
-      person.mults,
-      person.mults.crime_money * currentNodeMults.CrimeMoney,
+      multToWorkStats(person.mults, person.mults.crime_money * currentNodeMults.CrimeMoney),
     ),
     currentNodeMults.CrimeExpGain,
     false,
@@ -91,7 +90,10 @@ export const calculateFactionRep = (person: IPerson, type: FactionWorkType, favo
 export function calculateFactionExp(person: IPerson, type: FactionWorkType): WorkStats {
   return processWorkStats(
     person,
-    scaleWorkStats(multWorkStats(FactionWorkStats[type], person.mults), currentNodeMults.FactionWorkExpGain / gameCPS),
+    scaleWorkStats(
+      multWorkStats(FactionWorkStats[type], multToWorkStats(person.mults)),
+      currentNodeMults.FactionWorkExpGain / gameCPS,
+    ),
   );
 }
 
@@ -113,7 +115,7 @@ export function calculateClassEarnings(person: IPerson, type: ClassType, locatio
 
   const earnings = multWorkStats(
     scaleWorkStats(classs.earnings, (location.expMult / gameCPS) * hashMult, false),
-    person.mults,
+    multToWorkStats(person.mults),
   );
   earnings.money = calculateCost(classs, location) / gameCPS;
   return processWorkStats(person, earnings);
@@ -141,8 +143,7 @@ export const calculateCompanyWorkStats = (
         agiExp: companyPosition.agilityExpGain,
         chaExp: companyPosition.charismaExpGain,
       },
-      worker.mults,
-      worker.mults.work_money,
+      multToWorkStats(worker.mults, worker.mults.work_money),
     ),
     company.expMultiplier * currentNodeMults.CompanyWorkExpGain,
     false,

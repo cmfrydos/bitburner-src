@@ -2,13 +2,64 @@ import type { Person } from "../../PersonObjects/Person";
 import type { BlackOperation } from "./BlackOperation";
 import type { Bladeburner } from "../Bladeburner";
 import type { Availability, ActionIdentifier, SuccessChanceParams } from "../Types";
-
 import { BladeburnerActionType, BladeburnerMultName, BladeburnerOperationName } from "@enums";
 import { BladeburnerConstants } from "../data/Constants";
 import { ActionClass } from "./Action";
 import { Generic_fromJSON, IReviverValue, constructorsForReviver } from "../../utils/JSONReviver";
 import { LevelableActionClass, LevelableActionParams } from "./LevelableAction";
 import { clampInteger } from "../../utils/helpers/clampNumber";
+import { ContractOpsEffect, ContractOpsFailEffect, ContractOpsSuccessEffect } from "./Contract";
+import { formatBigNumber } from "../../ui/formatNumber";
+import { ActionEffect, ActionEffectLogParams } from "./ActionEffect";
+import { getRandomIntInclusive } from "../../utils/helpers/getRandomIntInclusive";
+import { isSleeveSupportWork } from "../../PersonObjects/Sleeve/Work/SleeveSupportWork";
+import { Player } from "@player";
+import { Sleeve } from "../../PersonObjects/Sleeve/Sleeve";
+import { shuffleArray } from "../../utils/helpers/shuffleArray";
+
+export function GetOpsTeamLoss(
+  teamCount: number,
+  sleeveSize: number,
+  teamSize: number,
+  lossFactor: number,
+  minimumLoss: number,
+) {
+  if (teamCount < 1) return 0;
+  const teamMaxLoss = Math.ceil(teamSize * lossFactor);
+  const losses = getRandomIntInclusive(minimumLoss, teamMaxLoss);
+  if (teamSize - losses >= sleeveSize) return losses;
+  const nonSleeveTeam = teamSize - sleeveSize;
+  const lostSleevesCount = losses - nonSleeveTeam;
+  const sleeves = Player.sleeves.filter((x) => isSleeveSupportWork(x.currentWork));
+  const lostSleeves = shuffleArray(sleeves).slice(0, lostSleevesCount);
+  lostSleeves.forEach((s: Sleeve) => s.takeDamage(s.hp.max)); // deal lethal damage
+  return losses - sleeveSize; // this is a known bug, it should be: return nonSleeveTeam
+}
+
+const OperationEffect = new ActionEffect({
+  log: (params: ActionEffectLogParams) =>
+    params.teamChange < 0
+      ? `You lost ${formatBigNumber(-params.teamChange)} team members during ${params.action.name}.`
+      : "",
+});
+
+const OperationSuccessEffect = new ActionEffect({
+  teamMemberGain: (action, sleeveSize, teamSize) =>
+    -GetOpsTeamLoss((action as Operation).teamCount, sleeveSize, teamSize, 0.5, 0),
+  log: (params: ActionEffectLogParams) =>
+    `${params.name}: ${params.action.name} successfully completed! Gained ${formatBigNumber(params.rankChange)} rank.`,
+  furtherEffect: (_, act, __) => {
+    const action = act as LevelableActionClass;
+    action.successes++;
+    action.setMaxLevel(BladeburnerConstants.OperationSuccessesPerLevel);
+    action.level = action.autoLevel ? action.maxLevel : action.level;
+  },
+});
+
+const OperationFailEffect = new ActionEffect({
+  teamMemberGain: (action, sleeveSize, teamSize) =>
+    -GetOpsTeamLoss((action as Operation).teamCount, sleeveSize, teamSize, 1, 0),
+});
 
 export interface OperationParams extends LevelableActionParams {
   name: BladeburnerOperationName;
@@ -28,6 +79,24 @@ export class Operation extends LevelableActionClass {
     if (!params) return;
     this.name = params.name;
     if (params.getAvailability) this.getAvailability = params.getAvailability;
+
+    this.generalEffect = ActionEffect.AddEffectsArray([
+      new ActionEffect(params?.generalEffect),
+      ContractOpsEffect,
+      OperationEffect,
+    ]);
+    this.successEffect = ActionEffect.AddEffectsArray([
+      new ActionEffect(params?.successEffect),
+      ContractOpsSuccessEffect,
+      OperationSuccessEffect,
+    ]);
+    this.failureEffect = ActionEffect.AddEffectsArray([
+      new ActionEffect(params?.failureEffect),
+      ContractOpsFailEffect,
+      OperationFailEffect,
+    ]);
+    this.combinedSuccessEffect = ActionEffect.AddEffects(this.generalEffect, this.successEffect);
+    this.combinedFailureEffect = ActionEffect.AddEffects(this.generalEffect, this.failureEffect);
   }
 
   // These functions are shared between operations and blackops, so they are defined outside of Operation

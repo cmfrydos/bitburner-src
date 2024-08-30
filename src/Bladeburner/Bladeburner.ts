@@ -1,14 +1,12 @@
 import type { PromisePair } from "../Types/Promises";
-import type { BlackOperation, Contract, GeneralAction, Operation } from "./Actions";
+import { BlackOperation, Contract, GeneralAction, Operation } from "./Actions";
 import type { ActionIdentifier, Action, Attempt } from "./Types";
 import type { Person } from "../PersonObjects/Person";
-import type { Skills as PersonSkills } from "../PersonObjects/Skills";
-
+import { type Skills as PersonSkills } from "../PersonObjects/Skills";
 import {
   AugmentationName,
   BladeburnerActionType,
   BladeburnerContractName,
-  BladeburnerGeneralActionName,
   BladeburnerMultName,
   BladeburnerOperationName,
   BladeburnerSkillName,
@@ -17,7 +15,7 @@ import {
 } from "@enums";
 import { getKeyList } from "../utils/helpers/getKeyList";
 import { constructorsForReviver, Generic_toJSON, Generic_fromJSON, IReviverValue } from "../utils/JSONReviver";
-import { formatHp, formatNumberNoSuffix, formatSleeveShock } from "../ui/formatNumber";
+import { formatNumberNoSuffix } from "../ui/formatNumber";
 import { Skills } from "./data/Skills";
 import { City } from "./City";
 import { Player } from "@player";
@@ -27,9 +25,8 @@ import { ConsoleHelpText } from "./data/Help";
 import { exceptionAlert } from "../utils/helpers/exceptionAlert";
 import { getRandomIntInclusive } from "../utils/helpers/getRandomIntInclusive";
 import { BladeburnerConstants } from "./data/Constants";
-import { formatExp, formatMoney, formatPercent, formatBigNumber, formatStamina } from "../ui/formatNumber";
+import { formatBigNumber } from "../ui/formatNumber";
 import { currentNodeMults } from "../BitNode/BitNodeMultipliers";
-import { addOffset } from "../utils/helpers/addOffset";
 import { Factions } from "../Faction/Factions";
 import { calculateHospitalizationCost } from "../Hospital/Hospital";
 import { dialogBoxCreate } from "../ui/React/DialogBox";
@@ -37,8 +34,7 @@ import { Settings } from "../Settings/Settings";
 import { formatTime } from "../utils/helpers/formatTime";
 import { joinFaction } from "../Faction/FactionHelpers";
 import { isSleeveInfiltrateWork } from "../PersonObjects/Sleeve/Work/SleeveInfiltrateWork";
-import { isSleeveSupportWork } from "../PersonObjects/Sleeve/Work/SleeveSupportWork";
-import { WorkStats, newWorkStats } from "../Work/WorkStats";
+import { WorkStats, multToWorkStats, multWorkStats, scaleWorkStats } from "../Work/WorkStats";
 import { getEnumHelper } from "../utils/EnumHelper";
 import { PartialRecord, createEnumKeyedRecord, getRecordEntries } from "../Types/Record";
 import { createContracts, loadContractsData } from "./data/Contracts";
@@ -49,6 +45,7 @@ import { BlackOperations } from "./data/BlackOperations";
 import { GeneralActions } from "./data/GeneralActions";
 import { PlayerObject } from "../PersonObjects/Player/PlayerObject";
 import { Sleeve } from "../PersonObjects/Sleeve/Sleeve";
+import { applySleeveGains } from "../PersonObjects/Sleeve/Work/Work";
 
 export const BladeburnerPromise: PromisePair<number> = { promise: null, resolve: null };
 
@@ -137,7 +134,7 @@ export class Bladeburner {
     }
     this.action = actionId;
     this.actionTimeCurrent = 0;
-    this.actionTimeToComplete = action.getActionTime(this, Player);
+    this.actionTimeToComplete = action.getActionTotalSeconds(this, Player);
     return { success: true, message: `Started action ${action.name}` };
   }
 
@@ -664,52 +661,6 @@ export class Bladeburner {
     // 10% chance of nothing happening
   }
 
-  /**
-   * Return stat to be gained from Contracts, Operations, and Black Operations
-   * @param action(Action obj) - Derived action class
-   * @param success(bool) - Whether action was successful
-   */
-  getActionStats(action: Action, person: Person, success: boolean): WorkStats {
-    const difficulty = action.getDifficulty();
-
-    /**
-     * Gain multiplier based on difficulty. If it changes then the
-     * same variable calculated in completeAction() needs to change too
-     */
-    const difficultyMult =
-      Math.pow(difficulty, BladeburnerConstants.DiffMultExponentialFactor) +
-      difficulty / BladeburnerConstants.DiffMultLinearFactor;
-
-    const time = action.getActionTime(this, person);
-    const successMult = success ? 1 : 0.5;
-
-    const unweightedGain = time * BladeburnerConstants.BaseStatGain * successMult * difficultyMult;
-    const unweightedIntGain = time * BladeburnerConstants.BaseIntGain * successMult * difficultyMult;
-    const skillMult = this.getSkillMult(BladeburnerMultName.ExpGain);
-
-    return {
-      hackExp: unweightedGain * action.weights.hacking * skillMult,
-      strExp: unweightedGain * action.weights.strength * skillMult,
-      defExp: unweightedGain * action.weights.defense * skillMult,
-      dexExp: unweightedGain * action.weights.dexterity * skillMult,
-      agiExp: unweightedGain * action.weights.agility * skillMult,
-      chaExp: unweightedGain * action.weights.charisma * skillMult,
-      intExp: unweightedIntGain * action.weights.intelligence * skillMult,
-      money: 0,
-      reputation: 0,
-    };
-  }
-
-  getDiplomacyPercentage(person: Person): number {
-    // Returns a percentage by which the city's chaos level should be modified (e.g. 2 for 2%)
-    const CharismaLinearFactor = 1e3;
-    const CharismaExponentialFactor = 0.045;
-
-    const charismaEff =
-      Math.pow(person.skills.charisma, CharismaExponentialFactor) + person.skills.charisma / CharismaLinearFactor;
-    return charismaEff;
-  }
-
   getRecruitmentSuccessChance(person: Person): number {
     return Math.pow(person.skills.charisma, 0.45) / (this.teamSize - this.sleeveSize + 1);
   }
@@ -757,472 +708,149 @@ export class Bladeburner {
     }
   }
 
-  completeOperation(success: boolean): void {
-    if (this.action?.type !== BladeburnerActionType.Operation) {
-      throw new Error("completeOperation() called even though current action is not an Operation");
-    }
-    const action = this.getActionObject(this.action);
+  completeAction(person: Person, actionIdent: ActionIdentifier) {
+    const loggingConstants = {
+      General: this.logging.general,
+      "Black Operations": this.logging.blackops,
+      Operations: this.logging.ops,
+      Contracts: this.logging.contracts,
+    };
 
-    // Calculate team losses
-    const teamCount = action.teamCount;
-    if (teamCount >= 1) {
-      const maxLosses = success ? Math.ceil(teamCount / 2) : Math.floor(teamCount);
-      const losses = getRandomIntInclusive(0, maxLosses);
-      this.teamSize -= losses;
-      if (this.teamSize < this.sleeveSize) {
-        const sup = Player.sleeves.filter((x) => isSleeveSupportWork(x.currentWork));
-        for (let i = 0; i > this.teamSize - this.sleeveSize; i--) {
-          const r = Math.floor(Math.random() * sup.length);
-          sup[r].takeDamage(sup[r].hp.max);
-          sup.splice(r, 1);
-        }
-        this.teamSize += this.sleeveSize;
+    const action = this.getActionObject(actionIdent);
+    try {
+      const success = action.attempt(this, person);
+      const effect = success ? action.combinedSuccessEffect : action.combinedFailureEffect;
+
+      // Money gain
+      const earnings = effect.earnings(action) * this.getSkillMult(BladeburnerMultName.Money);
+      Player.gainMoney(earnings, person instanceof PlayerObject ? "bladeburner" : "sleeves");
+      // Stamina change
+      const previousStamina = this.stamina;
+      this.stamina = clampNumber(
+        0,
+        this.stamina + effect.staminaChange(this.maxStamina, action, person),
+        this.maxStamina,
+      );
+      // Stats change
+      let statChange = effect.statChange(action, this.getSkillMult(BladeburnerMultName.ExpGain));
+      // this if shouldn't exist, since it is a bug #1607 (duplicate application of exp mults)
+      if (effect.statChangeExtraMultsMultiply) {
+        statChange = multWorkStats(statChange, multToWorkStats(person.mults));
       }
-      this.teamLost += losses;
-      if (this.logging.ops && losses > 0) {
-        this.log("Lost " + formatNumberNoSuffix(losses, 0) + " team members during this " + action.name);
+      if (effect.statChangeTimeMultiply) {
+        let actionTotalSeconds = action.getActionTotalSeconds(this, person);
+        // This line shouldn't exist, since it reintroduced bug #295 again
+        actionTotalSeconds *= 1000;
+        statChange = scaleWorkStats(statChange, actionTotalSeconds);
       }
-    }
+      const personStatChange = (stat: WorkStats) =>
+        person instanceof PlayerObject
+          ? multWorkStats(stat, multToWorkStats(Player.mults)) // player apply exp mults
+          : scaleWorkStats(stat, (person as Sleeve).shockBonus()); // sleeve apply shock mult
+      const gainStats = (stat: WorkStats) =>
+        person instanceof PlayerObject ? person.gainStats(stat) : applySleeveGains(person as Sleeve, stat); // note: this actually applies some stat gains to ALL Sleeves + the Player
 
-    const city = this.getCurrentCity();
-    switch (action.name) {
-      case BladeburnerOperationName.Investigation:
-        if (success) {
-          city.improvePopulationEstimateByPercentage(
-            0.4 * this.getSkillMult(BladeburnerMultName.SuccessChanceEstimate),
-          );
-        } else {
-          this.triggerPotentialMigration(this.city, 0.1);
-        }
-        break;
-      case BladeburnerOperationName.Undercover:
-        if (success) {
-          city.improvePopulationEstimateByPercentage(
-            0.8 * this.getSkillMult(BladeburnerMultName.SuccessChanceEstimate),
-          );
-        } else {
-          this.triggerPotentialMigration(this.city, 0.15);
-        }
-        break;
-      case BladeburnerOperationName.Sting:
-        if (success) {
-          city.changePopulationByPercentage(-0.1, {
-            changeEstEqually: true,
-            nonZero: true,
-          });
-        }
-        city.changeChaosByCount(0.1);
-        break;
-      case BladeburnerOperationName.Raid:
-        if (success) {
-          city.changePopulationByPercentage(-1, {
-            changeEstEqually: true,
-            nonZero: true,
-          });
-          --city.comms;
-        } else {
-          const change = getRandomIntInclusive(-10, -5) / 10;
-          city.changePopulationByPercentage(change, {
-            nonZero: true,
-            changeEstEqually: false,
-          });
-        }
-        city.changeChaosByPercentage(getRandomIntInclusive(1, 5));
-        break;
-      case BladeburnerOperationName.StealthRetirement:
-        if (success) {
-          city.changePopulationByPercentage(-0.5, {
-            changeEstEqually: true,
-            nonZero: true,
-          });
-        }
-        city.changeChaosByPercentage(getRandomIntInclusive(-3, -1));
-        break;
-      case BladeburnerOperationName.Assassination:
-        if (success) {
-          city.changePopulationByCount(-1, { estChange: -1, estOffset: 0 });
-        }
-        city.changeChaosByPercentage(getRandomIntInclusive(-5, 5));
-        break;
-      default:
-        throw new Error("Invalid Action name in completeOperation: " + this.action.name);
-    }
-  }
+      const oldStatChange = statChange;
+      statChange = personStatChange(statChange);
+      gainStats(statChange);
+      // this line shouldn't exist, since it is a bug #1607 (Logging part)
+      statChange = oldStatChange;
 
-  completeContract(success: boolean, action: Contract): void {
-    const city = this.getCurrentCity();
-    if (success) {
-      switch (action.name) {
-        case BladeburnerContractName.Tracking:
-          // Increase estimate accuracy by a relatively small amount
-          city.improvePopulationEstimateByCount(
-            getRandomIntInclusive(100, 1e3) * this.getSkillMult(BladeburnerMultName.SuccessChanceEstimate),
-          );
-          break;
-        case BladeburnerContractName.BountyHunter:
-          city.changePopulationByCount(-1, { estChange: -1, estOffset: 0 });
-          city.changeChaosByCount(0.02);
-          break;
-        case BladeburnerContractName.Retirement:
-          city.changePopulationByCount(-1, { estChange: -1, estOffset: 0 });
-          city.changeChaosByCount(0.04);
-          break;
+      // Max Stamina change
+      let maxStaminaChange = effect.maxStaminaChange;
+      //this line shouldn't exist #1607 (Multiple application of stamina mults), look into getEffectiveMaxStaminaTrainingBonus
+      maxStaminaChange *= this.getSkillMult(BladeburnerMultName.Stamina);
+      this.staminaBonus += maxStaminaChange;
+
+      let maxStaminaChangeLog = this.getEffectiveMaxStaminaTrainingBonus(maxStaminaChange);
+      maxStaminaChangeLog = maxStaminaChange; // this line shouldn't exist, since it is a bug #1607 (Logging part)
+
+      // Rank change, also changes Skill Points and Faction Reputation
+      let rankChange = effect.rankGain(action);
+      if (rankChange > 0) {
+        rankChange *= currentNodeMults.BladeburnerRank;
       }
-    }
-  }
-
-  completeAction(person: Person, actionIdent: ActionIdentifier, isPlayer = true): WorkStats {
-    const currentHp = person.hp.current;
-    const getExtraLogAfterTakingDamage = (damage: number) => {
-      let extraLog = "";
-      if (currentHp <= damage) {
-        if (person instanceof PlayerObject) {
-          extraLog += ` ${person.whoAmI()} was hospitalized. Current HP is ${formatHp(person.hp.current)}.`;
-        } else if (person instanceof Sleeve) {
-          extraLog += ` ${person.whoAmI()} was shocked. Current shock is ${formatSleeveShock(
-            person.shock,
-          )}. Current HP is ${formatHp(person.hp.current)}.`;
+      this.changeRank(person, rankChange);
+      // Team size change
+      const teamChange = effect.teamMemberGain(action, this.sleeveSize, this.teamSize);
+      this.teamSize += teamChange;
+      if (teamChange < 0) {
+        this.teamLost -= teamChange;
+      }
+      // Chaos change
+      let chaosPercentChange = 0; // used for logging
+      const cities = effect.applyChaosToAllCities ? Object.values(this.cities) : [this.getCurrentCity()];
+      for (const city of cities) {
+        chaosPercentChange = effect.chaosPercentageChange(person);
+        city.changeChaosByPercentage(chaosPercentChange);
+        city.changeChaosByCount(effect.chaosAbsoluteChange(city.chaos));
+      }
+      // Health change
+      const previousHealth = person.hp.current;
+      const healthChange = effect.hpChange(action);
+      if (healthChange < 0) {
+        const cost = calculateHospitalizationCost(-healthChange);
+        if (person.takeDamage(-healthChange)) {
+          ++this.numHosp;
+          this.moneyLost += cost;
         }
       } else {
-        extraLog += ` HP reduced from ${formatHp(currentHp)} to ${formatHp(person.hp.current)}.`;
+        person.regenerateHp(healthChange);
       }
-      return extraLog;
-    };
-    let retValue = newWorkStats();
-    const action = this.getActionObject(actionIdent);
-    switch (action.type) {
-      case BladeburnerActionType.Contract:
-      case BladeburnerActionType.Operation: {
-        try {
-          const isOperation = action.type === BladeburnerActionType.Operation;
-          const difficulty = action.getDifficulty();
-          const difficultyMultiplier =
-            Math.pow(difficulty, BladeburnerConstants.DiffMultExponentialFactor) +
-            difficulty / BladeburnerConstants.DiffMultLinearFactor;
-          const rewardMultiplier = Math.pow(action.rewardFac, action.level - 1);
-
-          if (isPlayer) {
-            // Stamina loss is based on difficulty
-            this.stamina -= BladeburnerConstants.BaseStaminaLoss * difficultyMultiplier;
-            if (this.stamina < 0) {
-              this.stamina = 0;
-            }
-          }
-
-          // Process Contract/Operation success/failure
-          if (action.attempt(this, person)) {
-            retValue = this.getActionStats(action, person, true);
-            ++action.successes;
-            --action.count;
-
-            // Earn money for contracts
-            let moneyGain = 0;
-            if (!isOperation) {
-              moneyGain =
-                BladeburnerConstants.ContractBaseMoneyGain *
-                rewardMultiplier *
-                this.getSkillMult(BladeburnerMultName.Money);
-              retValue.money = moneyGain;
-            }
-
-            if (isOperation) {
-              action.setMaxLevel(BladeburnerConstants.OperationSuccessesPerLevel);
-            } else {
-              action.setMaxLevel(BladeburnerConstants.ContractSuccessesPerLevel);
-            }
-            if (action.rankGain) {
-              const gain = addOffset(action.rankGain * rewardMultiplier * currentNodeMults.BladeburnerRank, 10);
-              this.changeRank(person, gain);
-              if (isOperation && this.logging.ops) {
-                this.log(
-                  `${person.whoAmI()}: ${action.name} successfully completed! Gained ${formatBigNumber(gain)} rank.`,
-                );
-              } else if (!isOperation && this.logging.contracts) {
-                this.log(
-                  `${person.whoAmI()}: ${action.name} contract successfully completed! Gained ` +
-                    `${formatBigNumber(gain)} rank and ${formatMoney(moneyGain)}.`,
-                );
-              }
-            }
-            isOperation ? this.completeOperation(true) : this.completeContract(true, action);
-          } else {
-            retValue = this.getActionStats(action, person, false);
-            ++action.failures;
-            --action.count;
-            let loss = 0,
-              damage = 0;
-            if (action.rankLoss) {
-              loss = addOffset(action.rankLoss * rewardMultiplier, 10);
-              this.changeRank(person, -1 * loss);
-            }
-            if (action.hpLoss) {
-              damage = action.hpLoss * difficultyMultiplier;
-              damage = Math.ceil(addOffset(damage, 10));
-              const cost = calculateHospitalizationCost(damage);
-              if (person.takeDamage(damage)) {
-                ++this.numHosp;
-                this.moneyLost += cost;
-              }
-            }
-            let logLossText = "";
-            if (loss > 0) {
-              logLossText += ` Lost ${formatNumberNoSuffix(loss, 3)} rank.`;
-            }
-            if (damage > 0) {
-              logLossText += ` Took ${formatNumberNoSuffix(damage, 0)} damage.${getExtraLogAfterTakingDamage(damage)}`;
-            }
-            if (isOperation && this.logging.ops) {
-              this.log(`${person.whoAmI()}: ${action.name} failed!${logLossText}`);
-            } else if (!isOperation && this.logging.contracts) {
-              this.log(`${person.whoAmI()}: ${action.name} contract failed!${logLossText}`);
-            }
-            isOperation ? this.completeOperation(false) : this.completeContract(false, action);
-          }
-          if (action.autoLevel) {
-            action.level = action.maxLevel;
-          } // Autolevel
-        } catch (e: unknown) {
-          exceptionAlert(e);
-        }
-        break;
+      // Contract and Operation count change
+      for (const contract of Object.values(this.contracts)) {
+        contract.count += effect.contractCountChange(contract);
       }
-      case BladeburnerActionType.BlackOp: {
-        const difficulty = action.getDifficulty();
-        const difficultyMultiplier =
-          Math.pow(difficulty, BladeburnerConstants.DiffMultExponentialFactor) +
-          difficulty / BladeburnerConstants.DiffMultLinearFactor;
-
-        // Stamina loss is based on difficulty
-        this.stamina -= BladeburnerConstants.BaseStaminaLoss * difficultyMultiplier;
-        if (this.stamina < 0) {
-          this.stamina = 0;
-        }
-
-        // Team loss variables
-        const teamCount = action.teamCount;
-        let teamLossMax;
-
-        if (action.attempt(this, person)) {
-          retValue = this.getActionStats(action, person, true);
-          this.numBlackOpsComplete++;
-          let rankGain = 0;
-          if (action.rankGain) {
-            rankGain = addOffset(action.rankGain * currentNodeMults.BladeburnerRank, 10);
-            this.changeRank(person, rankGain);
-          }
-          teamLossMax = Math.ceil(teamCount / 2);
-
-          if (this.logging.blackops) {
-            this.log(
-              `${person.whoAmI()}: ${action.name} successful! Gained ${formatNumberNoSuffix(rankGain, 1)} rank.`,
-            );
-          }
-        } else {
-          retValue = this.getActionStats(action, person, false);
-          let rankLoss = 0;
-          let damage = 0;
-          if (action.rankLoss) {
-            rankLoss = addOffset(action.rankLoss, 10);
-            this.changeRank(person, -1 * rankLoss);
-          }
-          if (action.hpLoss) {
-            damage = action.hpLoss * difficultyMultiplier;
-            damage = Math.ceil(addOffset(damage, 10));
-            const cost = calculateHospitalizationCost(damage);
-            if (person.takeDamage(damage)) {
-              ++this.numHosp;
-              this.moneyLost += cost;
-            }
-          }
-          teamLossMax = Math.floor(teamCount);
-
-          if (this.logging.blackops) {
-            this.log(
-              `${person.whoAmI()}: ${action.name} failed! Lost ${formatNumberNoSuffix(
-                rankLoss,
-                1,
-              )} rank. Took ${formatNumberNoSuffix(damage, 0)} damage.${getExtraLogAfterTakingDamage(damage)}`,
-            );
-          }
-        }
-
-        this.resetAction(); // Stop regardless of success or fail
-
-        // Calculate team losses
-        if (teamCount >= 1) {
-          const losses = getRandomIntInclusive(1, teamLossMax);
-          this.teamSize -= losses;
-          if (this.teamSize < this.sleeveSize) {
-            const sup = Player.sleeves.filter((x) => isSleeveSupportWork(x.currentWork));
-            for (let i = 0; i > this.teamSize - this.sleeveSize; i--) {
-              const r = Math.floor(Math.random() * sup.length);
-              sup[r].takeDamage(sup[r].hp.max);
-              sup.splice(r, 1);
-            }
-            this.teamSize += this.sleeveSize;
-          }
-          this.teamLost += losses;
-          if (this.logging.blackops) {
-            this.log(
-              `${person.whoAmI()}:  You lost ${formatNumberNoSuffix(losses, 0)} team members during ${action.name}.`,
-            );
-          }
-        }
-        break;
+      for (const operation of Object.values(this.operations)) {
+        operation.count += effect.operationCountChange(operation);
       }
-      case BladeburnerActionType.General:
-        switch (action.name) {
-          case BladeburnerGeneralActionName.Training: {
-            this.stamina -= 0.5 * BladeburnerConstants.BaseStaminaLoss;
-            const strExpGain = 30 * person.mults.strength_exp,
-              defExpGain = 30 * person.mults.defense_exp,
-              dexExpGain = 30 * person.mults.dexterity_exp,
-              agiExpGain = 30 * person.mults.agility_exp,
-              staminaGain = 0.04 * this.getSkillMult(BladeburnerMultName.Stamina);
-            retValue.strExp = strExpGain;
-            retValue.defExp = defExpGain;
-            retValue.dexExp = dexExpGain;
-            retValue.agiExp = agiExpGain;
-            this.staminaBonus += staminaGain;
-            if (this.logging.general) {
-              this.log(
-                `${person.whoAmI()}: ` +
-                  "Training completed. Gained: " +
-                  formatExp(strExpGain) +
-                  " str exp, " +
-                  formatExp(defExpGain) +
-                  " def exp, " +
-                  formatExp(dexExpGain) +
-                  " dex exp, " +
-                  formatExp(agiExpGain) +
-                  " agi exp, " +
-                  formatBigNumber(staminaGain) +
-                  " max stamina.",
-              );
-            }
-            break;
-          }
-          case BladeburnerGeneralActionName.FieldAnalysis: {
-            // Does not use stamina. Effectiveness depends on hacking, int, and cha
-            let eff =
-              0.04 * Math.pow(person.skills.hacking, 0.3) +
-              0.04 * Math.pow(person.skills.intelligence, 0.9) +
-              0.02 * Math.pow(person.skills.charisma, 0.3);
-            eff *= person.mults.bladeburner_analysis;
-            if (isNaN(eff) || eff < 0) {
-              throw new Error("Field Analysis Effectiveness calculated to be NaN or negative");
-            }
-            const hackingExpGain = 20 * person.mults.hacking_exp;
-            const charismaExpGain = 20 * person.mults.charisma_exp;
-            const rankGain = 0.1 * currentNodeMults.BladeburnerRank;
-            retValue.hackExp = hackingExpGain;
-            retValue.chaExp = charismaExpGain;
-            retValue.intExp = BladeburnerConstants.BaseIntGain;
-            this.changeRank(person, rankGain);
-            this.getCurrentCity().improvePopulationEstimateByPercentage(
-              eff * this.getSkillMult(BladeburnerMultName.SuccessChanceEstimate),
-            );
-            if (this.logging.general) {
-              this.log(
-                `${person.whoAmI()}: ` +
-                  `Field analysis completed. Gained ${formatBigNumber(rankGain)} rank, ` +
-                  `${formatExp(hackingExpGain)} hacking exp, and ` +
-                  `${formatExp(charismaExpGain)} charisma exp.`,
-              );
-            }
-            break;
-          }
-          case BladeburnerGeneralActionName.Recruitment: {
-            const actionTime = action.getActionTime(this, person) * 1000;
-            if (action.attempt(this, person)) {
-              const expGain = 2 * BladeburnerConstants.BaseStatGain * actionTime;
-              retValue.chaExp = expGain;
-              ++this.teamSize;
-              if (this.logging.general) {
-                this.log(
-                  `${person.whoAmI()}: ` +
-                    "Successfully recruited a team member! Gained " +
-                    formatExp(expGain) +
-                    " charisma exp.",
-                );
-              }
-            } else {
-              const expGain = BladeburnerConstants.BaseStatGain * actionTime;
-              retValue.chaExp = expGain;
-              if (this.logging.general) {
-                this.log(
-                  `${person.whoAmI()}: ` +
-                    "Failed to recruit a team member. Gained " +
-                    formatExp(expGain) +
-                    " charisma exp.",
-                );
-              }
-            }
-            break;
-          }
-          case BladeburnerGeneralActionName.Diplomacy: {
-            const diplomacyPct = this.getDiplomacyPercentage(person);
-            this.getCurrentCity().changeChaosByPercentage(-diplomacyPct);
-            if (this.logging.general) {
-              this.log(
-                `${person.whoAmI()}: Diplomacy completed. Chaos levels in the current city fell by ${formatPercent(
-                  diplomacyPct / 100,
-                )}.`,
-              );
-            }
-            break;
-          }
-          case BladeburnerGeneralActionName.HyperbolicRegen: {
-            person.regenerateHp(BladeburnerConstants.HrcHpGain);
+      // Population absolute change
+      const absPopChange = effect.popChangeCount();
+      const relPopChange = effect.popChangePercentage();
+      const city = this.getCurrentCity();
+      city.changePopulationByCount(absPopChange, { estChange: absPopChange, estOffset: 0 });
+      city.changePopulationByPercentage(relPopChange.percent, {
+        changeEstEqually: relPopChange.changeEqually,
+        nonZero: relPopChange.nonZero,
+      });
 
-            const currentStamina = this.stamina;
-            const staminaGain = this.maxStamina * (BladeburnerConstants.HrcStaminaGain / 100);
-            this.stamina = Math.min(this.maxStamina, this.stamina + staminaGain);
-            if (this.logging.general) {
-              let extraLog = "";
-              if (Player.hp.current > currentHp) {
-                extraLog += ` Restored ${formatHp(BladeburnerConstants.HrcHpGain)} HP. Current HP is ${formatHp(
-                  Player.hp.current,
-                )}.`;
-              }
-              if (this.stamina > currentStamina) {
-                extraLog += ` Restored ${formatStamina(staminaGain)} stamina. Current stamina is ${formatStamina(
-                  this.stamina,
-                )}.`;
-              }
-              this.log(`${person.whoAmI()}: Rested in Hyperbolic Regeneration Chamber.${extraLog}`);
-            }
-            break;
-          }
-          case BladeburnerGeneralActionName.InciteViolence: {
-            for (const contract of Object.values(this.contracts)) {
-              contract.count += (60 * 3 * contract.growthFunction()) / BladeburnerConstants.ActionCountGrowthPeriod;
-            }
-            for (const operation of Object.values(this.operations)) {
-              operation.count += (60 * 3 * operation.growthFunction()) / BladeburnerConstants.ActionCountGrowthPeriod;
-            }
-            if (this.logging.general) {
-              this.log(`${person.whoAmI()}: Incited violence in the synthoid communities.`);
-            }
-            for (const cityName of Object.values(CityName)) {
-              const city = this.cities[cityName];
-              city.changeChaosByCount(10);
-              city.changeChaosByCount(city.chaos / Math.log10(city.chaos));
-            }
-            break;
-          }
-          default: {
-            // Verify general actions switch statement is exhaustive
-            const __a: never = action;
-          }
-        }
-        break;
-      default: {
-        // Verify type switch statement is exhaustive
-        const __a: never = action;
+      // Population Estimate change
+      const abs = effect.popEstChangeCount() * this.getSkillMult(BladeburnerMultName.SuccessChanceEstimate);
+      const pct = effect.popEstChangePercentage(person) * this.getSkillMult(BladeburnerMultName.SuccessChanceEstimate);
+      if (isNaN(pct) || pct < 0) {
+        throw new Error("Population change calculated to be NaN or negative");
       }
+      this.getCurrentCity().improvePopulationEstimateByCount(abs);
+      this.getCurrentCity().improvePopulationEstimateByPercentage(pct);
+
+      // Any other effects, like leveling up contracts/operations, counting BlackOps, or trigger migration
+      effect.furtherEffect(this, action, this.getCurrentCity());
+      // Logging
+      const logging = loggingConstants[action.type];
+      if (logging) {
+        const log = effect.log({
+          name: person.whoAmI(),
+          statChange: statChange,
+          staminaChange: this.stamina - previousStamina,
+          rankChange: rankChange,
+          chaosPercentChange: chaosPercentChange,
+          previousHealth: previousHealth,
+          stamina: this.stamina,
+          hpChange: healthChange,
+          maxStaminaChange: maxStaminaChangeLog,
+          action: action,
+          teamChange: teamChange,
+          earnings: earnings,
+          person: person,
+        });
+        if (log != "") {
+          this.log(log);
+        }
+      }
+      //this.resetAction(); // this was previously only needed for blackops
+    } catch (e: unknown) {
+      exceptionAlert(e);
     }
-    return retValue;
   }
 
   infiltrateSynthoidCommunities(): void {
@@ -1283,9 +911,7 @@ export class Bladeburner {
     // Complete the task if it's complete
     if (this.actionTimeCurrent >= this.actionTimeToComplete) {
       this.actionTimeOverflow = this.actionTimeCurrent - this.actionTimeToComplete;
-      const retValue = this.completeAction(Player, action.id);
-      Player.gainMoney(retValue.money, "bladeburner");
-      Player.gainStats(retValue);
+      this.completeAction(Player, action.id);
       if (action.type != BladeburnerActionType.BlackOp) {
         this.startAction(action.id); // Attempt to repeat action
       }
@@ -1302,15 +928,17 @@ export class Bladeburner {
     );
   }
 
+  getEffectiveMaxStaminaTrainingBonus(staminaBonus?: number): number {
+    const mult = this.getSkillMult(BladeburnerMultName.Stamina) * Player.mults.bladeburner_max_stamina;
+    return (staminaBonus ?? this.staminaBonus) * mult;
+  }
+
   calculateMaxStamina(): void {
     const baseStamina = Math.pow(this.getEffectiveSkillLevel(Player, "agility"), 0.8);
     // Min value of maxStamina is an arbitrarily small positive value. It must not be 0 to avoid NaN stamina penalty.
-    const maxStamina = clampNumber(
-      (baseStamina + this.staminaBonus) *
-        this.getSkillMult(BladeburnerMultName.Stamina) *
-        Player.mults.bladeburner_max_stamina,
-      1e-9,
-    );
+    const mult = this.getSkillMult(BladeburnerMultName.Stamina) * Player.mults.bladeburner_max_stamina;
+    const maxStamina = Math.max(baseStamina * mult + this.getEffectiveMaxStaminaTrainingBonus(), 1e-9);
+    // this.staminaBonus is a relict from the old system, it should be removed in 3.0
     if (this.maxStamina === maxStamina) {
       return;
     }

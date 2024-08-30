@@ -22,7 +22,7 @@ export class GeneralAction extends ActionClass {
   constructor(params: GeneralActionParams) {
     super(params);
     this.name = params.name;
-    this.getActionTime = params.getActionTime;
+    this.getActionTotalSeconds = params.getActionTime;
     if (params.getSuccessChance) this.getSuccessChance = params.getSuccessChance;
   }
 

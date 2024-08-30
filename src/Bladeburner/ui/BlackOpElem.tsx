@@ -27,7 +27,7 @@ export function BlackOpElem({ bladeburner, action }: BlackOpElemProps): React.Re
     );
   }
 
-  const actionTime = action.getActionTime(bladeburner, Player);
+  const actionTime = action.getActionTotalSeconds(bladeburner, Player);
   const hasRequiredRank = bladeburner.rank >= action.reqdRank;
 
   return (

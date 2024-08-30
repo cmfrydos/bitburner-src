@@ -1,14 +1,14 @@
+import { BladeburnerConstants } from "../data/Constants";
 import type { Bladeburner } from "../Bladeburner";
 import type { Person } from "../../PersonObjects/Person";
 import type { Availability, SuccessChanceParams } from "../Types";
 import type { Skills as PersonSkills } from "../../PersonObjects/Skills";
-
 import { addOffset } from "../../utils/helpers/addOffset";
-import { BladeburnerConstants } from "../data/Constants";
 import { calculateIntelligenceBonus } from "../../PersonObjects/formulas/intelligence";
 import { BladeburnerMultName } from "../Enums";
 import { getRecordKeys } from "../../Types/Record";
 import { clampNumber } from "../../utils/helpers/clampNumber";
+import { ActionEffect } from "./ActionEffect";
 
 export interface ActionParams {
   desc: string;
@@ -21,6 +21,9 @@ export interface ActionParams {
   isKill?: boolean;
   weights?: PersonSkills;
   decays?: PersonSkills;
+  generalEffect?: ActionEffect;
+  successEffect?: ActionEffect;
+  failureEffect?: ActionEffect;
 }
 
 export abstract class ActionClass {
@@ -58,20 +61,32 @@ export abstract class ActionClass {
     intelligence: 0.9,
   };
 
+  generalEffect: ActionEffect;
+  successEffect: ActionEffect;
+  failureEffect: ActionEffect;
+  combinedSuccessEffect: ActionEffect;
+  combinedFailureEffect: ActionEffect;
+
   constructor(params: ActionParams | null = null) {
-    if (!params) return;
-    this.desc = params.desc;
-    if (params.baseDifficulty) this.baseDifficulty = addOffset(params.baseDifficulty, 10);
+    this.desc = params?.desc ?? this.desc;
+    this.baseDifficulty = params?.baseDifficulty ? addOffset(params.baseDifficulty, 10) : this.baseDifficulty;
 
-    if (params.rankGain) this.rankGain = params.rankGain;
-    if (params.rankLoss) this.rankLoss = params.rankLoss;
-    if (params.hpLoss) this.hpLoss = params.hpLoss;
+    this.rankGain = params?.rankGain ?? this.rankGain;
+    this.rankLoss = params?.rankLoss ?? this.rankLoss;
+    this.hpLoss = params?.hpLoss ?? this.hpLoss;
 
-    if (params.isStealth) this.isStealth = params.isStealth;
-    if (params.isKill) this.isKill = params.isKill;
+    this.isStealth = params?.isStealth ?? this.isStealth;
+    this.isKill = params?.isKill ?? this.isKill;
 
-    if (params.weights) this.weights = params.weights;
-    if (params.decays) this.decays = params.decays;
+    this.weights = params?.weights ?? this.weights;
+    this.decays = params?.decays ?? this.decays;
+
+    this.generalEffect = new ActionEffect(params?.generalEffect);
+    this.successEffect = new ActionEffect(params?.successEffect);
+    this.failureEffect = new ActionEffect(params?.failureEffect);
+
+    this.combinedSuccessEffect = ActionEffect.AddEffects(this.generalEffect, this.successEffect);
+    this.combinedFailureEffect = ActionEffect.AddEffects(this.generalEffect, this.failureEffect);
   }
 
   /** Tests for success. Should be called when an action has completed */
@@ -97,7 +112,7 @@ export abstract class ActionClass {
     return 1;
   }
 
-  getActionTime(bladeburner: Bladeburner, person: Person): number {
+  getActionTotalSeconds(bladeburner: Bladeburner, person: Person): number {
     const difficulty = this.getDifficulty();
     let baseTime = difficulty / BladeburnerConstants.DifficultyToTimeFactor;
     const skillFac = bladeburner.getSkillMult(BladeburnerMultName.ActionTime); // Always < 1
@@ -134,6 +149,14 @@ export abstract class ActionClass {
 
   getDifficulty(): number {
     return this.baseDifficulty;
+  }
+
+  getEffDifficulty(
+    lin: number = BladeburnerConstants.DiffMultLinearFactor,
+    exp: number = BladeburnerConstants.DiffMultExponentialFactor,
+  ): number {
+    const diff = this.getDifficulty();
+    return Math.pow(diff, exp) + diff / lin;
   }
 
   getSuccessRange(bladeburner: Bladeburner, person: Person): [minChance: number, maxChance: number] {

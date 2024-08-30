@@ -16,17 +16,17 @@ export interface WorkStats {
   intExp: number;
 }
 
-export const newWorkStats = (params?: Partial<WorkStats>): WorkStats => {
+export const newWorkStats = (params?: Partial<WorkStats>, def = 0): WorkStats => {
   return {
-    money: params?.money ?? 0,
-    reputation: params?.reputation ?? 0,
-    hackExp: params?.hackExp ?? 0,
-    strExp: params?.strExp ?? 0,
-    defExp: params?.defExp ?? 0,
-    dexExp: params?.dexExp ?? 0,
-    agiExp: params?.agiExp ?? 0,
-    chaExp: params?.chaExp ?? 0,
-    intExp: params?.intExp ?? 0,
+    money: params?.money ?? def,
+    reputation: params?.reputation ?? def,
+    hackExp: params?.hackExp ?? def,
+    strExp: params?.strExp ?? def,
+    defExp: params?.defExp ?? def,
+    dexExp: params?.dexExp ?? def,
+    agiExp: params?.agiExp ?? def,
+    chaExp: params?.chaExp ?? def,
+    intExp: params?.intExp ?? def,
   };
 };
 
@@ -98,17 +98,30 @@ export const applyWorkStatsExp = (target: Person, workStats: WorkStats, mult = 1
   return gains;
 };
 
-/** Calculate the application of a person's multipliers to a WorkStats object */
-export function multWorkStats(workStats: Partial<WorkStats>, mults: Multipliers, moneyMult = 1, repMult = 1) {
+export function multToWorkStats(mults: Multipliers, money = 1, rep = 1, int = 0): WorkStats {
   return {
-    money: (workStats.money ?? 0) * moneyMult,
-    reputation: (workStats.reputation ?? 0) * repMult,
-    hackExp: (workStats.hackExp ?? 0) * mults.hacking_exp,
-    strExp: (workStats.strExp ?? 0) * mults.strength_exp,
-    defExp: (workStats.defExp ?? 0) * mults.defense_exp,
-    dexExp: (workStats.dexExp ?? 0) * mults.dexterity_exp,
-    agiExp: (workStats.agiExp ?? 0) * mults.agility_exp,
-    chaExp: (workStats.chaExp ?? 0) * mults.charisma_exp,
-    intExp: workStats.intExp ?? 0,
+    money: money,
+    reputation: rep,
+    hackExp: mults.hacking_exp,
+    strExp: mults.strength_exp,
+    defExp: mults.defense_exp,
+    dexExp: mults.dexterity_exp,
+    agiExp: mults.agility_exp,
+    chaExp: mults.charisma_exp,
+    intExp: int,
+  };
+}
+
+export function multWorkStats(w1: Partial<WorkStats>, w2: Partial<WorkStats>): WorkStats {
+  return {
+    money: (w1.money ?? 0) * (w2.money ?? 0),
+    reputation: (w1.reputation ?? 0) * (w2.reputation ?? 0),
+    hackExp: (w1.hackExp ?? 0) * (w2.hackExp ?? 0),
+    strExp: (w1.strExp ?? 0) * (w2.strExp ?? 0),
+    defExp: (w1.defExp ?? 0) * (w2.defExp ?? 0),
+    dexExp: (w1.dexExp ?? 0) * (w2.dexExp ?? 0),
+    agiExp: (w1.agiExp ?? 0) * (w2.agiExp ?? 0),
+    chaExp: (w1.chaExp ?? 0) * (w2.chaExp ?? 0),
+    intExp: (w1.intExp ?? 0) * (w2.intExp ?? 0),
   };
 }

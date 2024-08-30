@@ -23,7 +23,7 @@ export function OperationElem({ bladeburner, action }: OperationElemProps): Reac
   const rerender = useRerender();
   const isActive =
     bladeburner.action?.type === BladeburnerActionType.Operation && action.name === bladeburner.action?.name;
-  const actionTime = action.getActionTime(bladeburner, Player);
+  const actionTime = action.getActionTotalSeconds(bladeburner, Player);
 
   return (
     <Paper sx={{ my: 1, p: 1 }}>

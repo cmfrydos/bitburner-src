@@ -20,7 +20,7 @@ interface ContractElemProps {
 export function ContractElem({ bladeburner, action }: ContractElemProps): React.ReactElement {
   const rerender = useRerender();
   const isActive = action.name === bladeburner.action?.name;
-  const actionTime = action.getActionTime(bladeburner, Player);
+  const actionTime = action.getActionTotalSeconds(bladeburner, Player);
 
   return (
     <Paper sx={{ my: 1, p: 1 }}>

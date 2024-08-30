@@ -3,6 +3,7 @@ import { Operation } from "../Actions/Operation";
 import { getRandomIntInclusive } from "../../utils/helpers/getRandomIntInclusive";
 import { LevelableActionClass } from "../Actions/LevelableAction";
 import { assertLoadingType } from "../../utils/TypeAssertion";
+import { ActionEffect } from "../Actions/ActionEffect";
 
 export function createOperations(): Record<BladeburnerOperationName, Operation> {
   return {
@@ -38,6 +39,14 @@ export function createOperations(): Record<BladeburnerOperationName, Operation> 
       isStealth: true,
       growthFunction: () => getRandomIntInclusive(10, 40) / 10,
       maxCount: 100,
+      successEffect: new ActionEffect({
+        popEstChangePercentage: () => 0.4,
+      }),
+      failureEffect: new ActionEffect({
+        furtherEffect: (bladeburner, __, city) => {
+          bladeburner.triggerPotentialMigration(city.name, 0.1);
+        },
+      }),
     }),
     [BladeburnerOperationName.Undercover]: new Operation({
       name: BladeburnerOperationName.Undercover,
@@ -71,6 +80,14 @@ export function createOperations(): Record<BladeburnerOperationName, Operation> 
       isStealth: true,
       growthFunction: () => getRandomIntInclusive(10, 40) / 10,
       maxCount: 100,
+      successEffect: new ActionEffect({
+        popEstChangePercentage: () => 0.8,
+      }),
+      failureEffect: new ActionEffect({
+        furtherEffect: (bladeburner, action, city) => {
+          bladeburner.triggerPotentialMigration(city.name, 0.15);
+        },
+      }),
     }),
     [BladeburnerOperationName.Sting]: new Operation({
       name: BladeburnerOperationName.Sting,
@@ -101,6 +118,14 @@ export function createOperations(): Record<BladeburnerOperationName, Operation> 
       },
       isStealth: true,
       growthFunction: () => getRandomIntInclusive(3, 40) / 10,
+      successEffect: new ActionEffect({
+        popChangePercentage: () => {
+          return { percent: -0.1, changeEqually: true, nonZero: true };
+        },
+      }),
+      generalEffect: new ActionEffect({
+        chaosAbsoluteChange: () => 0.1,
+      }),
     }),
     [BladeburnerOperationName.Raid]: new Operation({
       name: BladeburnerOperationName.Raid,
@@ -137,6 +162,22 @@ export function createOperations(): Record<BladeburnerOperationName, Operation> 
         if (bladeburner.getCurrentCity().comms < 1) return { error: "No Synthoid communities in current city" };
         return LevelableActionClass.prototype.getAvailability.call(this, bladeburner);
       },
+      successEffect: new ActionEffect({
+        popChangePercentage: () => {
+          return { percent: -1, changeEqually: true, nonZero: true };
+        },
+        furtherEffect: (bladeburner, action, city) => {
+          city.comms--;
+        },
+      }),
+      failureEffect: new ActionEffect({
+        popChangePercentage: () => {
+          return { percent: getRandomIntInclusive(-10, -5) / 10, changeEqually: true, nonZero: true };
+        },
+      }),
+      generalEffect: new ActionEffect({
+        chaosPercentageChange: () => getRandomIntInclusive(1, 5),
+      }),
     }),
     [BladeburnerOperationName.StealthRetirement]: new Operation({
       name: BladeburnerOperationName.StealthRetirement,
@@ -170,6 +211,14 @@ export function createOperations(): Record<BladeburnerOperationName, Operation> 
       isStealth: true,
       isKill: true,
       growthFunction: () => getRandomIntInclusive(1, 20) / 10,
+      successEffect: new ActionEffect({
+        popChangePercentage: () => {
+          return { percent: -0.5, changeEqually: true, nonZero: true };
+        },
+      }),
+      generalEffect: new ActionEffect({
+        chaosPercentageChange: () => getRandomIntInclusive(-3, -1),
+      }),
     }),
     [BladeburnerOperationName.Assassination]: new Operation({
       name: BladeburnerOperationName.Assassination,
@@ -203,6 +252,12 @@ export function createOperations(): Record<BladeburnerOperationName, Operation> 
       isStealth: true,
       isKill: true,
       growthFunction: () => getRandomIntInclusive(1, 20) / 10,
+      successEffect: new ActionEffect({
+        popChangeCount: () => -1,
+      }),
+      generalEffect: new ActionEffect({
+        chaosPercentageChange: () => getRandomIntInclusive(-5, 5),
+      }),
     }),
   };
 }

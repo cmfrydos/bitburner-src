@@ -16,7 +16,7 @@ interface GeneralActionElemProps {
 
 export function GeneralActionElem({ bladeburner, action }: GeneralActionElemProps): React.ReactElement {
   const rerender = useRerender();
-  const actionTime = action.getActionTime(bladeburner, Player);
+  const actionTime = action.getActionTotalSeconds(bladeburner, Player);
   const successChance =
     action.name === "Recruitment" ? Math.max(0, Math.min(bladeburner.getRecruitmentSuccessChance(Player), 1)) : -1;
 

@@ -2,6 +2,7 @@ import { BladeburnerContractName } from "@enums";
 import { Contract } from "../Actions/Contract";
 import { getRandomIntInclusive } from "../../utils/helpers/getRandomIntInclusive";
 import { assertLoadingType } from "../../utils/TypeAssertion";
+import { ActionEffect } from "../Actions/ActionEffect";
 
 export function createContracts(): Record<BladeburnerContractName, Contract> {
   return {
@@ -38,6 +39,10 @@ export function createContracts(): Record<BladeburnerContractName, Contract> {
       isStealth: true,
       growthFunction: () => getRandomIntInclusive(5, 75) / 10,
       minCount: 25,
+
+      successEffect: new ActionEffect({
+        popEstChangeCount: () => getRandomIntInclusive(100, 1000),
+      }),
     }),
     [BladeburnerContractName.BountyHunter]: new Contract({
       name: BladeburnerContractName.BountyHunter,
@@ -71,6 +76,10 @@ export function createContracts(): Record<BladeburnerContractName, Contract> {
       isKill: true,
       growthFunction: () => getRandomIntInclusive(5, 75) / 10,
       minCount: 5,
+      successEffect: new ActionEffect({
+        chaosAbsoluteChange: () => 0.02,
+        popChangeCount: () => -1,
+      }),
     }),
     [BladeburnerContractName.Retirement]: new Contract({
       name: BladeburnerContractName.Retirement,
@@ -104,6 +113,10 @@ export function createContracts(): Record<BladeburnerContractName, Contract> {
       isKill: true,
       growthFunction: () => getRandomIntInclusive(5, 75) / 10,
       minCount: 5,
+      successEffect: new ActionEffect({
+        chaosAbsoluteChange: () => 0.04,
+        popChangeCount: () => -1,
+      }),
     }),
   };
 }

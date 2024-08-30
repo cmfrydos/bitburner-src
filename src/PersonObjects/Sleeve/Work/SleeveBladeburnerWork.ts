@@ -4,9 +4,8 @@ import type { PromisePair } from "../../../Types/Promises";
 import { Player } from "@player";
 import { BladeburnerActionType, BladeburnerGeneralActionName } from "@enums";
 import { Generic_fromJSON, Generic_toJSON, IReviverValue, constructorsForReviver } from "../../../utils/JSONReviver";
-import { applySleeveGains, SleeveWorkClass, SleeveWorkType } from "./Work";
+import { SleeveWorkClass, SleeveWorkType } from "./Work";
 import { CONSTANTS } from "../../../Constants";
-import { scaleWorkStats } from "../../../Work/WorkStats";
 import { getKeyList } from "../../../utils/helpers/getKeyList";
 import { loadActionIdentifier } from "../../../Bladeburner/utils/loadActionIdentifier";
 import { invalidWork } from "../../../Work/InvalidWork";
@@ -36,7 +35,7 @@ export class SleeveBladeburnerWork extends SleeveWorkClass {
   cyclesNeeded(sleeve: Sleeve): number {
     if (!Player.bladeburner) return Infinity;
     const action = Player.bladeburner.getActionObject(this.actionId);
-    const timeInMs = action.getActionTime(Player.bladeburner, sleeve) * 1000;
+    const timeInMs = action.getActionTotalSeconds(Player.bladeburner, sleeve) * 1000;
     return timeInMs / CONSTANTS.MilliPerCycle;
   }
 
@@ -61,9 +60,7 @@ export class SleeveBladeburnerWork extends SleeveWorkClass {
         const action = Player.bladeburner.getActionObject(this.actionId);
         if (action.count < 1) return sleeve.stopWork();
       }
-      const retValue = Player.bladeburner.completeAction(sleeve, this.actionId, false);
-      applySleeveGains(sleeve, scaleWorkStats(retValue, sleeve.shockBonus(), false));
-
+      Player.bladeburner.completeAction(sleeve, this.actionId);
       this.tasksCompleted++;
       this.cyclesWorked -= this.cyclesNeeded(sleeve);
       // Resolve and reset nextCompletion promise

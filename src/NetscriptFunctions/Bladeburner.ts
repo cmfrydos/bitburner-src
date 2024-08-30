@@ -115,7 +115,7 @@ export function NetscriptBladeburner(): InternalAPI<INetscriptBladeburner> {
       const bladeburner = getBladeburner(ctx);
       const action = getAction(ctx, type, name);
       // return ms instead of seconds
-      return action.getActionTime(bladeburner, Player) * 1000;
+      return action.getActionTotalSeconds(bladeburner, Player) * 1000;
     },
     getActionCurrentTime: (ctx) => () => {
       const bladeburner = getBladeburner(ctx);
