@@ -2,7 +2,8 @@ module.exports = {
   roots: ["<rootDir>/src/", "<rootDir>/test/"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
+    //"^.+\\.(tsx)$": "babel-jest",
+	"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/babelTransform.js",
   },
   transformIgnorePatterns: ["node_modules/(?!react-markdown)/"],
   testPathIgnorePatterns: [".cypress", "node_modules", "dist"],
