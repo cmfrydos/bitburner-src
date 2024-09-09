@@ -1,5 +1,17 @@
 import React, { useState } from "react";
-import { Button, Link, TextField, Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Link from "@mui\\material\\node\\Link\\Link.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { GameOptionsPage } from "./GameOptionsPage";
 import { Settings } from "../../Settings/Settings";
 import { ConnectionBauble } from "./ConnectionBauble";

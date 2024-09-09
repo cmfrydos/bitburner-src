@@ -6,9 +6,17 @@ import { Router } from "../../../ui/GameRoot";
 import { Page } from "../../../ui/Router";
 import { formatShares } from "../../../ui/formatNumber";
 import { Player } from "@player";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { ButtonWithTooltip } from "../../../ui/Components/ButtonWithTooltip";
-import TextField from "@mui/material/TextField";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TextField\index.js
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+
 import { createCorporation } from "../../Actions";
 import { costOfCreatingCorporation } from "../../helpers";
 

@@ -1,4 +1,8 @@
-import { TextField, StandardTextFieldProps } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+
 import React from "react";
 import { parseBigNumber } from "../formatNumber";
 

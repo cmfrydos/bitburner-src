@@ -1,7 +1,11 @@
 import type { BoardState } from "../Types";
 
 import React from "react";
-import { Grid } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Grid from "@mui\\material\\node\\Grid\\Grid.js";
+// @ts-ignore
+
 
 import { GoOpponent, GoColor } from "@enums";
 import { getSizeClass, GoPoint } from "./GoPoint";

@@ -1,4 +1,10 @@
-import { Box, Table } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Table from "@mui\\material\\node\\Table\\Table.js";
+// @ts-ignore
+
 import * as React from "react";
 import { ActiveFragment } from "../ActiveFragment";
 import { BaseGift } from "../BaseGift";

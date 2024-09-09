@@ -1,7 +1,17 @@
 import React, { ReactNode, ReactElement } from "react";
 
 import { Table, TableCell } from "./Table";
-import { TableBody, TableRow, Table as MuiTable, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import MuiTable from "@mui\\material\\node\\Table\\Table.js";
+// @ts-ignore
+import TableBody from "@mui\\material\\node\\TableBody\\TableBody.js";
+// @ts-ignore
+import TableRow from "@mui\\material\\node\\TableRow\\TableRow.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { makeStyles } from "tss-react/mui";
 import type { Property } from "csstype";
 

@@ -5,9 +5,27 @@
 import React from "react";
 import { useGang } from "./Context";
 
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
-import { Table, TableBody, TableCell, TableRow } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Table from "@mui\\material\\node\\Table\\Table.js";
+// @ts-ignore
+import TableBody from "@mui\\material\\node\\TableBody\\TableBody.js";
+// @ts-ignore
+import TableCell from "@mui\\material\\node\\TableCell\\TableCell.js";
+// @ts-ignore
+import TableRow from "@mui\\material\\node\\TableRow\\TableRow.js";
+// @ts-ignore
+
 
 import { formatMultiplier, formatRespect, formatWanted } from "../../ui/formatNumber";
 import { GangMember } from "../GangMember";

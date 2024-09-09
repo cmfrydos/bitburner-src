@@ -11,7 +11,11 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Select\index.js
+// @ts-ignore
+import Select from "@mui\\material\\node\\Select\\Select.js";
+// @ts-ignore
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Adjuster } from "./Adjuster";
 import { Player } from "@player";

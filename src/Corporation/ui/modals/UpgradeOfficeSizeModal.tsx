@@ -6,10 +6,26 @@ import { Corporation } from "../../Corporation";
 import { upgradeOfficeSize } from "../../Actions";
 import { Modal } from "../../../ui/React/Modal";
 import { useCorporation } from "../Context";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import Box from "@mui/material/Box";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { calculateOfficeSizeUpgradeCost } from "../../helpers";
 import { PositiveInteger } from "../../../types";
 

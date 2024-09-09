@@ -1,6 +1,12 @@
 import React from "react";
 import { makeStyles } from "tss-react/mui";
-import { Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Theme } from "@mui/material/styles";
 
 import { CityName } from "@enums";

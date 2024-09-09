@@ -1,8 +1,32 @@
 import React from "react";
 import _ from "lodash";
 
-import { Grid, Box, Button, IconButton, Paper, TextField, Tooltip, Typography } from "@mui/material";
-import { History, Reply } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Grid from "@mui\\material\\node\\Grid\\Grid.js";
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import History from "@mui\\icons-material\\History.js";
+// @ts-ignore
+import Reply from "@mui\\icons-material\\Reply.js";
+// @ts-ignore
+
 import { Color, ColorPicker } from "material-ui-color";
 
 import { Settings } from "../../Settings/Settings";

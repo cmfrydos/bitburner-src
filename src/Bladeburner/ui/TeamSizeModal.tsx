@@ -4,7 +4,15 @@ import type { BlackOperation, Operation } from "../Actions";
 import React, { useState } from "react";
 import { dialogBoxCreate } from "../../ui/React/DialogBox";
 import { Modal } from "../../ui/React/Modal";
-import { Button, TextField, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 interface TeamSizeModalProps {
   bladeburner: Bladeburner;

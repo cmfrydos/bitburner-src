@@ -1,4 +1,8 @@
-import LinearProgress from "@mui/material/LinearProgress";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\LinearProgress\index.js
+// @ts-ignore
+import LinearProgress from "@mui\\material\\node\\LinearProgress\\LinearProgress.js";
+// @ts-ignore
+
 import { Theme } from "@mui/material/styles";
 import { withStyles } from "tss-react/mui";
 

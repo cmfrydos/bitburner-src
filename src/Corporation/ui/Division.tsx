@@ -1,7 +1,11 @@
 // React Component for managing the Corporation's Industry UI
 // This Industry component does NOT include the city tabs at the top
 import React from "react";
-import { Box } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { CityName } from "@enums";
 import { DivisionOffice } from "./DivisionOffice";
 import { DivisionOverview } from "./DivisionOverview";

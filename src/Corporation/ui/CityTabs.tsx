@@ -3,7 +3,13 @@
 import type { OfficeSpace } from "../OfficeSpace";
 
 import React, { useState } from "react";
-import { Tab, Tabs } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Tab from "@mui\\material\\node\\Tab\\Tab.js";
+// @ts-ignore
+import Tabs from "@mui\\material\\node\\Tabs\\Tabs.js";
+// @ts-ignore
+
 import { CityName } from "@enums";
 import { Division } from "./Division";
 import { ExpandNewCity } from "./ExpandNewCity";

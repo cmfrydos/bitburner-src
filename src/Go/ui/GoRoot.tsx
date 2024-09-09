@@ -1,8 +1,26 @@
 import React from "react";
-import { Container, Tab, Tabs } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+import Tab from "@mui\\material\\node\\Tab\\Tab.js";
+// @ts-ignore
+import Tabs from "@mui\\material\\node\\Tabs\\Tabs.js";
+// @ts-ignore
+
 
 import { GoInstructionsPage } from "./GoInstructionsPage";
-import { BorderInnerSharp, Help, ManageSearch, History } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import BorderInnerSharp from "@mui\\icons-material\\BorderInnerSharp.js";
+// @ts-ignore
+import Help from "@mui\\icons-material\\Help.js";
+// @ts-ignore
+import History from "@mui\\icons-material\\History.js";
+// @ts-ignore
+import ManageSearch from "@mui\\icons-material\\ManageSearch.js";
+// @ts-ignore
+
 import { GoStatusPage } from "./GoStatusPage";
 import { GoHistoryPage } from "./GoHistoryPage";
 import { GoGameboardWrapper } from "./GoGameboardWrapper";

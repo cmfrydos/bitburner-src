@@ -1,13 +1,47 @@
 import React, { useState } from "react";
 import { useGang } from "./Context";
 
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { MenuItem, Table, TableBody, TextField } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Select\index.js
+// @ts-ignore
+import Select from "@mui\\material\\node\\Select\\Select.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import MenuItem from "@mui\\material\\node\\MenuItem\\MenuItem.js";
+// @ts-ignore
+import Table from "@mui\\material\\node\\Table\\Table.js";
+// @ts-ignore
+import TableBody from "@mui\\material\\node\\TableBody\\TableBody.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+
 import SearchIcon from "@mui/icons-material/Search";
 
 import { formatMultiplier, formatPercent } from "../../ui/formatNumber";

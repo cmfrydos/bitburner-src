@@ -10,11 +10,27 @@ import { Money } from "../../ui/React/Money";
 import { Reputation } from "../../ui/React/Reputation";
 
 import { dialogBoxCreate } from "../../ui/React/DialogBox";
-import { MathJax } from "better-react-mathjax";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\better-react-mathjax\esm\index.js
+// @ts-ignore
+import MathJax from "better-react-mathjax\\MathJax\\MathJax.js";
+// @ts-ignore
 
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { NumberInput } from "../../ui/React/NumberInput";
 
 type DonateOptionProps = {

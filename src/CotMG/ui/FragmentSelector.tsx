@@ -5,10 +5,26 @@ import { StaneksGift } from "../StaneksGift";
 import { FragmentPreview } from "./FragmentPreview";
 import { formatStaneksGiftPower } from "../../ui/formatNumber";
 
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Select\index.js
+// @ts-ignore
+import Select from "@mui\\material\\node\\Select\\Select.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\MenuItem\index.js
+// @ts-ignore
+import MenuItem from "@mui\\material\\node\\MenuItem\\MenuItem.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 
 interface IOptionProps {
   gift: StaneksGift;

@@ -1,4 +1,12 @@
-import { Container, Typography, Paper } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import React from "react";
 import { PurchasableAugmentations } from "../../../Augmentation/ui/PurchasableAugmentations";
 import { Player } from "@player";

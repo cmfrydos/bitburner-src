@@ -4,7 +4,11 @@ import { Modal } from "../../../ui/React/Modal";
 import { Money } from "../../../ui/React/Money";
 import { formatShares } from "../../../ui/formatNumber";
 import { useCorporation } from "../Context";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { ButtonWithTooltip } from "../../../ui/Components/ButtonWithTooltip";
 import { NumberInput } from "../../../ui/React/NumberInput";
 import { buyBackShares } from "../../Actions";

@@ -3,8 +3,34 @@ import type { BaseServer } from "../../Server/BaseServer";
 
 import React, { useState } from "react";
 
-import { MenuItem, Typography, Select, SelectChangeEvent, TextField, IconButton, List } from "@mui/material";
-import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage, Search } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+import List from "@mui\\material\\node\\List\\List.js";
+// @ts-ignore
+import MenuItem from "@mui\\material\\node\\MenuItem\\MenuItem.js";
+// @ts-ignore
+import Select from "@mui\\material\\node\\Select\\Select.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import FirstPage from "@mui\\icons-material\\FirstPage.js";
+// @ts-ignore
+import KeyboardArrowLeft from "@mui\\icons-material\\KeyboardArrowLeft.js";
+// @ts-ignore
+import KeyboardArrowRight from "@mui\\icons-material\\KeyboardArrowRight.js";
+// @ts-ignore
+import LastPage from "@mui\\icons-material\\LastPage.js";
+// @ts-ignore
+import Search from "@mui\\icons-material\\Search.js";
+// @ts-ignore
+
 
 import { ScriptProduction } from "./ScriptProduction";
 import { ServerAccordion } from "./ServerAccordion";

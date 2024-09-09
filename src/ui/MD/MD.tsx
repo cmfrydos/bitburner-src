@@ -1,6 +1,14 @@
 import React, { useEffect } from "react";
-import ReactMarkdown from "react-markdown";
-import { TableHead } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\react-markdown\index.js
+// @ts-ignore
+import { ReactMarkdown } from "react-markdown\\lib\\react-markdown.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import TableHead from "@mui\\material\\node\\TableHead\\TableHead.js";
+// @ts-ignore
+
 import remarkGfm from "remark-gfm";
 import { h1, h2, h3, h4, h5, h6, li, Td, Th, table, tr, Blockquote, p } from "./components";
 import { code, Pre } from "./code";

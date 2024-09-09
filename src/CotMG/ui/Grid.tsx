@@ -1,4 +1,10 @@
-import { TableBody, TableRow } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import TableBody from "@mui\\material\\node\\TableBody\\TableBody.js";
+// @ts-ignore
+import TableRow from "@mui\\material\\node\\TableRow\\TableRow.js";
+// @ts-ignore
+
 import * as React from "react";
 import { ActiveFragment } from "../ActiveFragment";
 import { calculateGrid } from "../Helper";

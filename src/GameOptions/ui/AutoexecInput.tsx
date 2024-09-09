@@ -1,5 +1,17 @@
 import React, { useState } from "react";
-import { Box, InputAdornment, TextField, Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import InputAdornment from "@mui\\material\\node\\InputAdornment\\InputAdornment.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Settings } from "../../Settings/Settings";
 import { parseCommand } from "../../Terminal/Parser";
 import { resolveScriptFilePath } from "../../Paths/ScriptFilePath";

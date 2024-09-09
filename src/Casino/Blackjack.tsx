@@ -5,13 +5,37 @@ import { Money } from "../ui/React/Money";
 import { win, reachedLimit } from "./Game";
 import { Deck } from "./CardDeck/Deck";
 import { Hand } from "./CardDeck/Hand";
-import { InputAdornment } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import InputAdornment from "@mui\\material\\node\\InputAdornment\\InputAdornment.js";
+// @ts-ignore
+
 import { ReactCard } from "./CardDeck/ReactCard";
-import Button from "@mui/material/Button";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TextField\index.js
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+
 
 const MAX_BET = 100e6;
 export const DECK_COUNT = 5; // 5-deck multideck

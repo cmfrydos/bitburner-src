@@ -2,16 +2,48 @@ import React, { useMemo, useCallback, useState, useEffect } from "react";
 import { KEYCODE } from "../../utils/helpers/keyCodes";
 import { styled, Theme, CSSObject } from "@mui/material/styles";
 import { makeStyles } from "tss-react/mui";
-import MuiDrawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import Tooltip from "@mui/material/Tooltip";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Drawer\index.js
+// @ts-ignore
+import MuiDrawer from "@mui\\material\\node\\Drawer\\Drawer.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\List\index.js
+// @ts-ignore
+import List from "@mui\\material\\node\\List\\List.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Divider\index.js
+// @ts-ignore
+import Divider from "@mui\\material\\node\\Divider\\Divider.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\ListItem\index.js
+// @ts-ignore
+import ListItem from "@mui\\material\\node\\ListItem\\ListItem.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\ListItemIcon\index.js
+// @ts-ignore
+import ListItemIcon from "@mui\\material\\node\\ListItemIcon\\ListItemIcon.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\ListItemText\index.js
+// @ts-ignore
+import ListItemText from "@mui\\material\\node\\ListItemText\\ListItemText.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import ComputerIcon from "@mui/icons-material/Computer";
 import LastPageIcon from "@mui/icons-material/LastPage"; // Terminal

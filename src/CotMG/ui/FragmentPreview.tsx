@@ -1,9 +1,17 @@
 import * as React from "react";
 import { Cell } from "./Cell";
 
-import TableRow from "@mui/material/TableRow";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableRow\index.js
+// @ts-ignore
+import TableRow from "@mui\\material\\node\\TableRow\\TableRow.js";
+// @ts-ignore
 
-import TableBody from "@mui/material/TableBody";
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableBody\index.js
+// @ts-ignore
+import TableBody from "@mui\\material\\node\\TableBody\\TableBody.js";
+// @ts-ignore
+
 import { Table } from "../../ui/React/Table";
 
 interface IProps {

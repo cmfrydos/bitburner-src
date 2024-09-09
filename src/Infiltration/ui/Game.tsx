@@ -1,4 +1,14 @@
-import { Button, Container, Paper, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import React, { useCallback, useEffect, useState } from "react";
 import { FactionName, ToastVariant } from "@enums";
 import { Router } from "../../ui/GameRoot";

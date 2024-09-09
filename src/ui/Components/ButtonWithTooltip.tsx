@@ -1,6 +1,14 @@
 import React from "react";
-import Tooltip, { TooltipProps } from "@mui/material/Tooltip";
-import Button, { ButtonProps } from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 
 interface ButtonWithTooltipProps {
   /** "" if the button is not disabled. If this is truthy, the button is disabled and this tooltip is displayed. */

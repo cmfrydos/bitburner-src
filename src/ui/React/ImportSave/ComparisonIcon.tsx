@@ -1,6 +1,10 @@
 import React from "react";
 
-import { Tooltip } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
 
 import ThumbUpAlt from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAlt from "@mui/icons-material/ThumbDownAlt";

@@ -1,7 +1,19 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { Player } from "@player";
 import { purchaseRamForHomeComputer } from "../../Server/ServerPurchases";
@@ -9,7 +21,11 @@ import { purchaseRamForHomeComputer } from "../../Server/ServerPurchases";
 import { Money } from "../../ui/React/Money";
 import { formatRam } from "../../ui/formatNumber";
 
-import { MathJax } from "better-react-mathjax";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\better-react-mathjax\esm\index.js
+// @ts-ignore
+import MathJax from "better-react-mathjax\\MathJax\\MathJax.js";
+// @ts-ignore
+
 import { currentNodeMults } from "../../BitNode/BitNodeMultipliers";
 import { ServerConstants } from "../../Server/data/Constants";
 

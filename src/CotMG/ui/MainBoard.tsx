@@ -4,14 +4,30 @@ import { FragmentType } from "../FragmentType";
 import { StaneksGift } from "../StaneksGift";
 import { FragmentInspector } from "./FragmentInspector";
 import { FragmentSelector } from "./FragmentSelector";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { Table } from "../../ui/React/Table";
 import { Grid } from "./Grid";
 import { zeros } from "../Helper";
 import { ActiveFragmentSummary } from "./ActiveFragmentSummary";
-import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 interface IProps {
   gift: StaneksGift;

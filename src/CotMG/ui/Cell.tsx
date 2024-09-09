@@ -1,7 +1,11 @@
 import * as React from "react";
 
 import { makeStyles } from "tss-react/mui";
-import { TableCell as MuiTableCell, TableCellProps } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import MuiTableCell from "@mui\\material\\node\\TableCell\\TableCell.js";
+// @ts-ignore
+
 
 const useStyles = makeStyles()({
   root: {

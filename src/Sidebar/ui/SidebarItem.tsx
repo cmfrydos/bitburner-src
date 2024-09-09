@@ -1,10 +1,34 @@
 import React, { memo } from "react";
-import Badge from "@mui/material/Badge";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Badge\index.js
+// @ts-ignore
+import Badge from "@mui\\material\\node\\Badge\\Badge.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\ListItem\index.js
+// @ts-ignore
+import ListItem from "@mui\\material\\node\\ListItem\\ListItem.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\ListItemIcon\index.js
+// @ts-ignore
+import ListItemIcon from "@mui\\material\\node\\ListItemIcon\\ListItemIcon.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\ListItemText\index.js
+// @ts-ignore
+import ListItemText from "@mui\\material\\node\\ListItemText\\ListItemText.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import type { Page } from "../../ui/Router";
 

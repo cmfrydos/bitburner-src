@@ -1,6 +1,10 @@
 import React from "react";
 import { Division } from "../Division";
-import { MathJax } from "better-react-mathjax";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\better-react-mathjax\esm\index.js
+// @ts-ignore
+import MathJax from "better-react-mathjax\\MathJax\\MathJax.js";
+// @ts-ignore
+
 import { getRecordEntries } from "../../Types/Record";
 
 interface IProps {

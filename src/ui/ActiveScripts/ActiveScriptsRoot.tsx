@@ -3,8 +3,16 @@
  * and provides information about all of the player's scripts that are currently running
  */
 import React, { useState } from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tabs\index.js
+// @ts-ignore
+import Tabs from "@mui\\material\\node\\Tabs\\Tabs.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tab\index.js
+// @ts-ignore
+import Tab from "@mui\\material\\node\\Tab\\Tab.js";
+// @ts-ignore
+
 
 import { ActiveScriptsPage } from "./ActiveScriptsPage";
 import { RecentScriptsPage } from "./RecentScriptsPage";

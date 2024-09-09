@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { deleteGame } from "../../db";
 import { ConfirmationModal } from "./ConfirmationModal";
-import Button from "@mui/material/Button";
-import { Tooltip } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import { pushDisableRestore } from "../../Electron";

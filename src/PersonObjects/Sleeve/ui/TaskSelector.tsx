@@ -1,7 +1,13 @@
 import type { Sleeve } from "../Sleeve";
 
 import React, { useState } from "react";
-import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import MenuItem from "@mui\\material\\node\\MenuItem\\MenuItem.js";
+// @ts-ignore
+import Select from "@mui\\material\\node\\Select\\Select.js";
+// @ts-ignore
+
 
 import { Player } from "@player";
 import {

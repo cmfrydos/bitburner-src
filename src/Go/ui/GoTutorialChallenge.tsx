@@ -1,5 +1,11 @@
 import React, { useRef, useState } from "react";
-import { Typography, Button } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { GoColor, GoValidity, ToastVariant } from "@enums";
 import { BoardState } from "../Types";

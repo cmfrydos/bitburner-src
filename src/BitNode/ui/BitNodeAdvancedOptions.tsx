@@ -15,7 +15,13 @@ import {
 } from "@mui/material";
 import { OptionSwitch } from "../../ui/React/OptionSwitch";
 import { ButtonWithTooltip } from "../../ui/Components/ButtonWithTooltip";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import ExpandLess from "@mui\\icons-material\\ExpandLess.js";
+// @ts-ignore
+import ExpandMore from "@mui\\icons-material\\ExpandMore.js";
+// @ts-ignore
+
 import { JSONMap } from "../../Types/Jsonable";
 import { Settings } from "../../Settings/Settings";
 import { Player } from "@player";

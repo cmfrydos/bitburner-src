@@ -1,7 +1,15 @@
 import type { Bladeburner } from "../Bladeburner";
 
 import React from "react";
-import { Box, Tab, Tabs } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Tab from "@mui\\material\\node\\Tab\\Tab.js";
+// @ts-ignore
+import Tabs from "@mui\\material\\node\\Tabs\\Tabs.js";
+// @ts-ignore
+
 
 import { GeneralActionPage } from "./GeneralActionPage";
 import { ContractPage } from "./ContractPage";

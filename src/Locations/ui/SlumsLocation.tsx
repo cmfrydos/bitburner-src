@@ -4,8 +4,16 @@
  * This subcomponent renders all of the buttons for committing crimes
  */
 import React from "react";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
 
 import { Crimes } from "../../Crime/Crimes";
 
@@ -13,7 +21,11 @@ import { formatPercent } from "../../ui/formatNumber";
 import { Router } from "../../ui/GameRoot";
 import { Page } from "../../ui/Router";
 import { Player } from "@player";
-import { Box } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { Crime } from "../../Crime/Crime";
 import { useRerender } from "../../ui/React/hooks";
 

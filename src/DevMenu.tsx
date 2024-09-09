@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { Player } from "@player";
 import { AugmentationName } from "@enums";

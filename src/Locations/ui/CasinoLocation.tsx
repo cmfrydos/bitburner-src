@@ -4,12 +4,20 @@
  * This subcomponent renders all of the buttons for training at the gym
  */
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { Blackjack, DECK_COUNT } from "../../Casino/Blackjack";
 import { CoinFlip } from "../../Casino/CoinFlip";
 import { Roulette } from "../../Casino/Roulette";
 import { SlotMachine } from "../../Casino/SlotMachine";
-import { Box } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 
 enum GameType {
   None = "none",

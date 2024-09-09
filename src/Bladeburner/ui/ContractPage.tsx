@@ -2,7 +2,11 @@ import type { Bladeburner } from "../Bladeburner";
 
 import * as React from "react";
 import { ContractElem } from "./ContractElem";
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 interface ContractPageProps {
   bladeburner: Bladeburner;

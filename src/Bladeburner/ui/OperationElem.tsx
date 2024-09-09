@@ -2,7 +2,13 @@ import type { Bladeburner } from "../Bladeburner";
 import type { Operation } from "../Actions/Operation";
 
 import React from "react";
-import { Paper, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { Player } from "@player";
 import { convertTimeMsToTimeElapsedString } from "../../utils/StringHelperFunctions";

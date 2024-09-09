@@ -1,6 +1,14 @@
 import React from "react";
 
-import { Typography, TableCell, TableRow } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import TableCell from "@mui\\material\\node\\TableCell\\TableCell.js";
+// @ts-ignore
+import TableRow from "@mui\\material\\node\\TableRow\\TableRow.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { formatExp, formatSkill } from "../formatNumber";
 import { useStyles } from "./CharacterOverview";

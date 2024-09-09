@@ -1,7 +1,11 @@
 import type { Bladeburner } from "../Bladeburner";
 
 import React from "react";
-import { Button } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 
 interface StopButtonProps {
   bladeburner: Bladeburner;

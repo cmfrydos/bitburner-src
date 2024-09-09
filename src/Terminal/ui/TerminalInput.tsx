@@ -1,7 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Theme } from "@mui/material/styles";
 import { makeStyles } from "tss-react/mui";
-import { Paper, Popper, TextField, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Popper from "@mui\\material\\node\\Popper\\Popper.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { KEY, KEYCODE } from "../../utils/helpers/keyCodes";
 import { Terminal } from "../../Terminal";

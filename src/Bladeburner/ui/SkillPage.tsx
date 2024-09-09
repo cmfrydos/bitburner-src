@@ -3,7 +3,11 @@ import type { Bladeburner } from "../Bladeburner";
 import React from "react";
 import { BladeburnerConstants } from "../data/Constants";
 import { formatBigNumber } from "../../ui/formatNumber";
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { useRerender } from "../../ui/React/hooks";
 import { SkillElem } from "./SkillElem";
 import { Skills } from "../data/Skills";

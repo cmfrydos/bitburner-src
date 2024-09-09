@@ -3,17 +3,61 @@ import { GetServer, GetAllServers } from "../Server/AllServers";
 import { Modal } from "../ui/React/Modal";
 import { formatBigNumber } from "../ui/formatNumber";
 
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Table\index.js
+// @ts-ignore
+import Table from "@mui\\material\\node\\Table\\Table.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableBody\index.js
+// @ts-ignore
+import TableBody from "@mui\\material\\node\\TableBody\\TableBody.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableCell\index.js
+// @ts-ignore
+import TableCell from "@mui\\material\\node\\TableCell\\TableCell.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableContainer\index.js
+// @ts-ignore
+import TableContainer from "@mui\\material\\node\\TableContainer\\TableContainer.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableHead\index.js
+// @ts-ignore
+import TableHead from "@mui\\material\\node\\TableHead\\TableHead.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableRow\index.js
+// @ts-ignore
+import TableRow from "@mui\\material\\node\\TableRow\\TableRow.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Accordion\index.js
+// @ts-ignore
+import Accordion from "@mui\\material\\node\\Accordion\\Accordion.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\AccordionSummary\index.js
+// @ts-ignore
+import AccordionSummary from "@mui\\material\\node\\AccordionSummary\\AccordionSummary.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\AccordionDetails\index.js
+// @ts-ignore
+import AccordionDetails from "@mui\\material\\node\\AccordionDetails\\AccordionDetails.js";
+// @ts-ignore
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { ServerName } from "../Types/strings";
 import { allContentFiles } from "../Paths/ContentFile";

@@ -8,7 +8,13 @@ import { TaskSelector } from "./TaskSelector";
 import { AscensionModal } from "./AscensionModal";
 
 import { Box } from "@mui/system";
-import { Button, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import HelpIcon from "@mui/icons-material/Help";
 
 import { GangMember } from "../GangMember";

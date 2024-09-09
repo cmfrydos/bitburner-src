@@ -3,7 +3,21 @@ import type { Bladeburner } from "../Bladeburner";
 import React, { useState, useRef, useEffect } from "react";
 import { KEY } from "../../utils/helpers/keyCodes";
 
-import { Box, List, ListItem, Paper, TextField, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import List from "@mui\\material\\node\\List\\List.js";
+// @ts-ignore
+import ListItem from "@mui\\material\\node\\ListItem\\ListItem.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Theme } from "@mui/material/styles";
 import { makeStyles } from "tss-react/mui";
 import { useRerender } from "../../ui/React/hooks";

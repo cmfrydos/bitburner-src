@@ -3,13 +3,29 @@ import { EventEmitter } from "../../utils/EventEmitter";
 import { RunningScript } from "../../Script/RunningScript";
 import { killWorkerScriptByPid } from "../../Netscript/killWorkerScript";
 
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
 
 import Draggable, { DraggableEvent } from "react-draggable";
 import { ResizableBox, ResizeCallbackData } from "react-resizable";
-import IconButton from "@mui/material/IconButton";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\IconButton\index.js
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";

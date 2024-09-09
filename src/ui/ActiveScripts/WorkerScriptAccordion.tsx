@@ -6,21 +6,69 @@ import * as React from "react";
 
 import { formatExp, formatThreads } from "../formatNumber";
 
-import Table from "@mui/material/Table";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
-import TableBody from "@mui/material/TableBody";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Table\index.js
+// @ts-ignore
+import Table from "@mui\\material\\node\\Table\\Table.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableCell\index.js
+// @ts-ignore
+import TableCell from "@mui\\material\\node\\TableCell\\TableCell.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableRow\index.js
+// @ts-ignore
+import TableRow from "@mui\\material\\node\\TableRow\\TableRow.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TableBody\index.js
+// @ts-ignore
+import TableBody from "@mui\\material\\node\\TableBody\\TableBody.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\IconButton\index.js
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+
 import DeleteIcon from "@mui/icons-material/Delete";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\ListItemButton\index.js
+// @ts-ignore
+import ListItemButton from "@mui\\material\\node\\ListItemButton\\ListItemButton.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\ListItemText\index.js
+// @ts-ignore
+import ListItemText from "@mui\\material\\node\\ListItemText\\ListItemText.js";
+// @ts-ignore
+
 import { makeStyles } from "tss-react/mui";
 
-import Collapse from "@mui/material/Collapse";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Collapse\index.js
+// @ts-ignore
+import Collapse from "@mui\\material\\node\\Collapse\\Collapse.js";
+// @ts-ignore
+
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 

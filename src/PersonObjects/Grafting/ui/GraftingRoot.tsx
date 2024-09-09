@@ -4,8 +4,36 @@ import { Player } from "@player";
 import { AugmentationName } from "@enums";
 
 import React, { useState } from "react";
-import { CheckBox, CheckBoxOutlineBlank, Construction, Search } from "@mui/icons-material";
-import { Box, Button, Container, List, ListItemButton, Paper, TextField, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import CheckBox from "@mui\\icons-material\\CheckBox.js";
+// @ts-ignore
+import CheckBoxOutlineBlank from "@mui\\icons-material\\CheckBoxOutlineBlank.js";
+// @ts-ignore
+import Construction from "@mui\\icons-material\\Construction.js";
+// @ts-ignore
+import Search from "@mui\\icons-material\\Search.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+import List from "@mui\\material\\node\\List\\List.js";
+// @ts-ignore
+import ListItemButton from "@mui\\material\\node\\ListItemButton\\ListItemButton.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { GraftingWork } from "../../../Work/GraftingWork";
 import { Augmentations } from "../../../Augmentation/Augmentations";

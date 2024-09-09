@@ -2,7 +2,19 @@
  * React component for displaying all of the player's purchased (but not installed)
  * Augmentations on the Augmentations UI.
  */
-import { List, ListItemText, Paper, Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import List from "@mui\\material\\node\\List\\List.js";
+// @ts-ignore
+import ListItemText from "@mui\\material\\node\\ListItemText\\ListItemText.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import * as React from "react";
 import { Player } from "@player";
 import { Augmentations } from "../Augmentations";

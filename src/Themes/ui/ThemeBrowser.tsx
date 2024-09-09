@@ -1,10 +1,26 @@
 import React, { useEffect, useState } from "react";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
 import { ThemeEvents } from "./Theme";
 import { Settings } from "../../Settings/Settings";
 import { getPredefinedThemes, IPredefinedTheme } from "../Themes";
-import { Box, ButtonGroup, Button } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import ButtonGroup from "@mui\\material\\node\\ButtonGroup\\ButtonGroup.js";
+// @ts-ignore
+
 import { ThemeEditorButton } from "./ThemeEditorButton";
 import { StyleEditorButton } from "./StyleEditorButton";
 import { ThemeEntry } from "./ThemeEntry";

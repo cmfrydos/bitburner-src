@@ -4,7 +4,11 @@ import { currentNodeMults } from "../BitNode/BitNodeMultipliers";
 import { Router } from "../ui/GameRoot";
 import { Page } from "../ui/Router";
 import { Option } from "./ui/Option";
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import {
   PlayerCondition,
   CompoundPlayerCondition,

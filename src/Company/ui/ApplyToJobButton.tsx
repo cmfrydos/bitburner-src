@@ -4,7 +4,11 @@ import type { Company } from "../Company";
 import * as React from "react";
 
 import { Player } from "@player";
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { ButtonWithTooltip } from "../../ui/Components/ButtonWithTooltip";
 import { JobSummary } from "./JobSummary";
 import { Requirement } from "../../ui/Components/Requirement";

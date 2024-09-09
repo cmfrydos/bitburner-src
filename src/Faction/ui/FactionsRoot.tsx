@@ -1,6 +1,38 @@
 import React, { useEffect } from "react";
-import { Explore, Info, LastPage, LocalPolice, NewReleases, Report, SportsMma } from "@mui/icons-material";
-import { Box, Button, Container, Paper, Tooltip, Typography, useTheme } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import Explore from "@mui\\icons-material\\Explore.js";
+// @ts-ignore
+import Info from "@mui\\icons-material\\Info.js";
+// @ts-ignore
+import LastPage from "@mui\\icons-material\\LastPage.js";
+// @ts-ignore
+import LocalPolice from "@mui\\icons-material\\LocalPolice.js";
+// @ts-ignore
+import NewReleases from "@mui\\icons-material\\NewReleases.js";
+// @ts-ignore
+import Report from "@mui\\icons-material\\Report.js";
+// @ts-ignore
+import SportsMma from "@mui\\icons-material\\SportsMma.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+import useTheme from "@mui\\material\\node\\styles\\useTheme.js";
+// @ts-ignore
+
 
 import { Player } from "@player";
 import { FactionName, FactionDiscovery } from "@enums";

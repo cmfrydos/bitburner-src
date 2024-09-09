@@ -13,7 +13,11 @@ import {
   Autocomplete,
   TextField,
 } from "@mui/material";
-import Tooltip from "@mui/material/Tooltip";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ReplyAllIcon from "@mui/icons-material/ReplyAll";
 import ReplyIcon from "@mui/icons-material/Reply";

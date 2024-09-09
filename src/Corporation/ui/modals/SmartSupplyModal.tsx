@@ -5,9 +5,21 @@ import { setSmartSupply, setSmartSupplyOption } from "../../Actions";
 import { dialogBoxCreate } from "../../../ui/React/DialogBox";
 import { Modal } from "../../../ui/React/Modal";
 import { useDivision } from "../Context";
-import Typography from "@mui/material/Typography";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\FormControlLabel\index.js
+// @ts-ignore
+import FormControlLabel from "@mui\\material\\node\\FormControlLabel\\FormControlLabel.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Switch\index.js
+// @ts-ignore
+import Switch from "@mui\\material\\node\\Switch\\Switch.js";
+// @ts-ignore
+
 import { CorpMaterialName } from "@nsdefs";
 import { useRerender } from "../../../ui/React/hooks";
 import { getRecordKeys } from "../../../Types/Record";

@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import IconButton from "@mui/material/IconButton";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\IconButton\index.js
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+
 import ClearIcon from "@mui/icons-material/Clear";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
-import TextField from "@mui/material/TextField";
-import Tooltip from "@mui/material/Tooltip";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\TextField\index.js
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
 
 interface IProps {
   label: string;

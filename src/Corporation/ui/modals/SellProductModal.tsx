@@ -3,7 +3,21 @@ import type { Division } from "../../Division";
 import type { Product } from "../../Product";
 
 import React, { useState } from "react";
-import { Button, FormControlLabel, Switch, TextField, Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import FormControlLabel from "@mui\\material\\node\\FormControlLabel\\FormControlLabel.js";
+// @ts-ignore
+import Switch from "@mui\\material\\node\\Switch\\Switch.js";
+// @ts-ignore
+import TextField from "@mui\\material\\node\\TextField\\TextField.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Modal } from "../../../ui/React/Modal";
 import { dialogBoxCreate } from "../../../ui/React/DialogBox";
 

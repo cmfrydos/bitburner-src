@@ -2,8 +2,16 @@ import { Milestones } from "../Milestones";
 import { Milestone } from "../Milestone";
 import * as React from "react";
 
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 
 function highestMilestone(milestones: Milestone[]): number {
   let n = -1;

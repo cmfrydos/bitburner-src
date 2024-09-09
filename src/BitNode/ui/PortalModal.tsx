@@ -5,8 +5,16 @@ import { type BitNodeBooleanOptions } from "@nsdefs";
 import { enterBitNode } from "../../RedPill";
 import { BitNodes } from "../BitNode";
 import { Modal } from "../../ui/React/Modal";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { BitnodeMultiplierDescription } from "./BitnodeMultipliersDescription";
 import { BitNodeAdvancedOptions } from "./BitNodeAdvancedOptions";
 import { JSONMap } from "../../Types/Jsonable";

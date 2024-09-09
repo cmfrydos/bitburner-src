@@ -1,6 +1,18 @@
 import React from "react";
 
-import { Accordion, AccordionSummary, AccordionDetails, Box, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Accordion from "@mui\\material\\node\\Accordion\\Accordion.js";
+// @ts-ignore
+import AccordionDetails from "@mui\\material\\node\\AccordionDetails\\AccordionDetails.js";
+// @ts-ignore
+import AccordionSummary from "@mui\\material\\node\\AccordionSummary\\AccordionSummary.js";
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { AchievementEntry } from "./AchievementEntry";
 import { Achievement, PlayerAchievement } from "./Achievements";

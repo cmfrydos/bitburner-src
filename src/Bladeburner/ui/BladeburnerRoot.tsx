@@ -4,7 +4,11 @@ import { Console } from "./Console";
 import { AllPages } from "./AllPages";
 
 import { Player } from "@player";
-import { Box } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { useCycleRerender } from "../../ui/React/hooks";
 
 export function BladeburnerRoot(): React.ReactElement {

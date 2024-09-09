@@ -21,10 +21,26 @@ import {
 import { Player } from "@player";
 import { GetServer } from "../../Server/AllServers";
 
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import { Box } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Grid\index.js
+// @ts-ignore
+import Grid from "@mui\\material\\node\\Grid\\Grid.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { useCycleRerender } from "../../ui/React/hooks";
 
 /** Root React Component for the Hacknet Node UI */

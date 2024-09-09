@@ -15,8 +15,16 @@ import { Settings } from "../../Settings/Settings";
 import { Player } from "@player";
 import { Router } from "../../ui/GameRoot";
 import { Page } from "../../ui/Router";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { Theme } from "@mui/material/styles";
 import { makeStyles } from "tss-react/mui";
 

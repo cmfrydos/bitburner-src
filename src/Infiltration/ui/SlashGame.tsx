@@ -1,4 +1,12 @@
-import { Box, Paper, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AugmentationName } from "@enums";
 import { Player } from "@player";

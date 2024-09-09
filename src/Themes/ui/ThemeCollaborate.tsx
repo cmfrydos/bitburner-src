@@ -1,6 +1,14 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
-import { Link } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Link from "@mui\\material\\node\\Link\\Link.js";
+// @ts-ignore
+
 
 export function ThemeCollaborate(): React.ReactElement {
   return (

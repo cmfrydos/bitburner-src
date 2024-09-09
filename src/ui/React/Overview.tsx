@@ -1,8 +1,16 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import Draggable, { DraggableEventHandler } from "react-draggable";
 import { makeStyles } from "tss-react/mui";
-import Collapse from "@mui/material/Collapse";
-import Paper from "@mui/material/Paper";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Collapse\index.js
+// @ts-ignore
+import Collapse from "@mui\\material\\node\\Collapse\\Collapse.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
@@ -10,7 +18,15 @@ import SchoolIcon from "@mui/icons-material/School";
 import { Router } from "../GameRoot";
 import { Page } from "../Router";
 import { Settings } from "../../Settings/Settings";
-import { Box, Button, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { debounce } from "lodash";
 
 const useStyles = makeStyles()({

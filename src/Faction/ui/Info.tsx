@@ -9,12 +9,28 @@ import { FactionInfo } from "../FactionInfo";
 
 import { Reputation } from "../../ui/React/Reputation";
 import { Favor } from "../../ui/React/Favor";
-import { MathJax } from "better-react-mathjax";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\better-react-mathjax\esm\index.js
+// @ts-ignore
+import MathJax from "better-react-mathjax\\MathJax\\MathJax.js";
+// @ts-ignore
+
 
 import { makeStyles } from "tss-react/mui";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
-import Box from "@mui/material/Box";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { useCycleRerender } from "../../ui/React/hooks";
 import { calculateFavorAfterResetting } from "../formulas/favor";
 

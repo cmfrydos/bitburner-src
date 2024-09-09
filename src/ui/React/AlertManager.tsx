@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { EventEmitter } from "../../utils/EventEmitter";
 import { Modal } from "./Modal";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { cyrb53 } from "../../utils/StringHelperFunctions";
 
 export const AlertEvents = new EventEmitter<[string | JSX.Element]>();

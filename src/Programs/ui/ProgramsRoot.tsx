@@ -1,7 +1,27 @@
 import React, { useEffect } from "react";
 import { find } from "lodash";
-import { Box, Typography, Button, Container, Paper } from "@mui/material";
-import { Check, Lock, Create } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import Check from "@mui\\icons-material\\Check.js";
+// @ts-ignore
+import Create from "@mui\\icons-material\\Create.js";
+// @ts-ignore
+import Lock from "@mui\\icons-material\\Lock.js";
+// @ts-ignore
+
 
 import { Player } from "@player";
 import { CompletedProgramName } from "@enums";

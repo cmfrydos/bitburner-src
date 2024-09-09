@@ -1,5 +1,15 @@
-import { CheckBox, CheckBoxOutlineBlank } from "@mui/icons-material";
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import CheckBox from "@mui\\icons-material\\CheckBox.js";
+// @ts-ignore
+import CheckBoxOutlineBlank from "@mui\\icons-material\\CheckBoxOutlineBlank.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import React from "react";
 import { Settings } from "../../Settings/Settings";
 

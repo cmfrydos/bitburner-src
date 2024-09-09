@@ -1,7 +1,13 @@
 import React from "react";
 import { Terminal } from "../../../Terminal";
 import { Settings } from "../../../Settings/Settings";
-import { Link, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Link from "@mui\\material\\node\\Link\\Link.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Router } from "../../../ui/GameRoot";
 import { Page } from "../../../ui/Router";
 

@@ -1,7 +1,11 @@
 import type { Company } from "../Company";
 import type { CompanyPosition } from "../CompanyPosition";
 
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Player } from "@player";
 import * as React from "react";
 import { CONSTANTS } from "../../Constants";

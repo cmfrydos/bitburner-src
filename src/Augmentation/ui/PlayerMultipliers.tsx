@@ -1,5 +1,21 @@
-import { DoubleArrow } from "@mui/icons-material";
-import { List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import DoubleArrow from "@mui\\icons-material\\DoubleArrow.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import List from "@mui\\material\\node\\List\\List.js";
+// @ts-ignore
+import ListItem from "@mui\\material\\node\\ListItem\\ListItem.js";
+// @ts-ignore
+import ListItemText from "@mui\\material\\node\\ListItemText\\ListItemText.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import * as React from "react";
 import { Multipliers, defaultMultipliers, mergeMultipliers } from "../../PersonObjects/Multipliers";
 import { currentNodeMults } from "../../BitNode/BitNodeMultipliers";

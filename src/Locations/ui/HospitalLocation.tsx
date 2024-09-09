@@ -4,7 +4,11 @@
  * This subcomponent renders all of the buttons for hospital options
  */
 import * as React from "react";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 
 import { Player } from "@player";
 import { getHospitalizationCost } from "../../Hospital/Hospital";

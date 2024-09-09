@@ -4,7 +4,11 @@ import type { BlackOperation, Operation } from "../Actions";
 import React, { useState } from "react";
 import { TeamSizeModal } from "./TeamSizeModal";
 import { formatNumberNoSuffix } from "../../ui/formatNumber";
-import { Button } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 
 interface TeamSizeButtonProps {
   action: Operation | BlackOperation;

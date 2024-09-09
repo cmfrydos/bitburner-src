@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link as MuiLink, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import MuiLink from "@mui\\material\\node\\Link\\Link.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Theme } from "@mui/material/styles";
 import { makeStyles } from "tss-react/mui";
 import _ from "lodash";

@@ -14,7 +14,13 @@ import { Faction } from "../Faction";
 import { Router } from "../../ui/GameRoot";
 import { Page } from "../../ui/Router";
 import { Player } from "@player";
-import { Typography, Button } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { CovenantPurchasesRoot } from "../../PersonObjects/Sleeve/ui/CovenantPurchasesRoot";
 import { FactionName, FactionWorkType } from "@enums";

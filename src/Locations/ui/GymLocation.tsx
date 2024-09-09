@@ -4,7 +4,11 @@
  * This subcomponent renders all of the buttons for training at the gym
  */
 import * as React from "react";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 
 import { Location } from "../Location";
 
@@ -13,7 +17,11 @@ import { Player } from "@player";
 import { Money } from "../../ui/React/Money";
 import { Router } from "../../ui/GameRoot";
 import { Page } from "../../ui/Router";
-import { Box } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { ClassWork, Classes } from "../../Work/ClassWork";
 import { calculateCost } from "../../Work/Formulas";
 import { GymType } from "@enums";

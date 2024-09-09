@@ -1,7 +1,29 @@
 import React, { useState } from "react";
 
-import { Container, Button, Paper, Box, Tooltip, Switch, FormControlLabel, Typography } from "@mui/material";
-import { Help } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+import FormControlLabel from "@mui\\material\\node\\FormControlLabel\\FormControlLabel.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Switch from "@mui\\material\\node\\Switch\\Switch.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import Help from "@mui\\icons-material\\Help.js";
+// @ts-ignore
+
 
 import { formatNumberNoSuffix, formatPercent } from "../../ui/formatNumber";
 

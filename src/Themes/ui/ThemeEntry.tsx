@@ -1,10 +1,32 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
 import PaletteSharpIcon from "@mui/icons-material/PaletteSharp";
 import { Settings } from "../../Settings/Settings";
 import { IPredefinedTheme } from "../Themes";
-import { Link, Card, CardHeader, CardContent, CardMedia, Button } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Card from "@mui\\material\\node\\Card\\Card.js";
+// @ts-ignore
+import CardContent from "@mui\\material\\node\\CardContent\\CardContent.js";
+// @ts-ignore
+import CardHeader from "@mui\\material\\node\\CardHeader\\CardHeader.js";
+// @ts-ignore
+import CardMedia from "@mui\\material\\node\\CardMedia\\CardMedia.js";
+// @ts-ignore
+import Link from "@mui\\material\\node\\Link\\Link.js";
+// @ts-ignore
+
 
 interface IProps {
   theme: IPredefinedTheme;

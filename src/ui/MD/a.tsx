@@ -1,5 +1,9 @@
 import React from "react";
-import { Link } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Link from "@mui\\material\\node\\Link\\Link.js";
+// @ts-ignore
+
 import { useNavigator } from "../React/Documentation";
 import { CorruptableText } from "../React/CorruptableText";
 import { Player } from "@player";

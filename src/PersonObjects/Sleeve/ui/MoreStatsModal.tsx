@@ -2,7 +2,11 @@ import { Sleeve } from "../Sleeve";
 import { formatExp, formatPercent } from "../../../ui/formatNumber";
 import { convertTimeMsToTimeElapsedString } from "../../../utils/StringHelperFunctions";
 import { CONSTANTS } from "../../../Constants";
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { StatsTable } from "../../../ui/React/StatsTable";
 import { Modal } from "../../../ui/React/Modal";
 import React from "react";

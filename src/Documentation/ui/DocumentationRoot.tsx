@@ -1,12 +1,20 @@
 import React, { useLayoutEffect, useState } from "react";
 
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { MD } from "../../ui/MD/MD";
 
 import { Navigator, windowTopPositionOfPages, useHistory } from "../../ui/React/Documentation";
 import { CONSTANTS } from "../../Constants";
 import { asFilePath, resolveFilePath } from "../../Paths/FilePath";
-import Box from "@mui/material/Box";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { Settings } from "../../Settings/Settings";
 import { Router } from "../../ui/GameRoot";
 import { Page } from "../../ui/Router";

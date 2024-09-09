@@ -1,14 +1,42 @@
 import React, { useState } from "react";
 
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Accordion\index.js
+// @ts-ignore
+import Accordion from "@mui\\material\\node\\Accordion\\Accordion.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\AccordionSummary\index.js
+// @ts-ignore
+import AccordionSummary from "@mui\\material\\node\\AccordionSummary\\AccordionSummary.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\AccordionDetails\index.js
+// @ts-ignore
+import AccordionDetails from "@mui\\material\\node\\AccordionDetails\\AccordionDetails.js";
+// @ts-ignore
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Select\index.js
+// @ts-ignore
+import Select from "@mui\\material\\node\\Select\\Select.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\MenuItem\index.js
+// @ts-ignore
+import MenuItem from "@mui\\material\\node\\MenuItem\\MenuItem.js";
+// @ts-ignore
+
 import { generateContract, generateRandomContract, generateRandomContractOnHome } from "../../CodingContractGenerator";
 import { CodingContractTypes } from "../../CodingContracts";
 

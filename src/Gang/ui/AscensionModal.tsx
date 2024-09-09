@@ -1,6 +1,14 @@
 import React, { useEffect } from "react";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 
 import { GangMember } from "../GangMember";
 import { formatPreciseMultiplier, formatRespect } from "../../ui/formatNumber";

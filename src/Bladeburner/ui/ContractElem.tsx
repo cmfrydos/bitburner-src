@@ -8,7 +8,13 @@ import { SuccessChance } from "./SuccessChance";
 import { ActionLevel } from "./ActionLevel";
 import { Autolevel } from "./Autolevel";
 import { formatBigNumber } from "../../ui/formatNumber";
-import { Paper, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { useRerender } from "../../ui/React/hooks";
 import { ActionHeader } from "./ActionHeader";
 

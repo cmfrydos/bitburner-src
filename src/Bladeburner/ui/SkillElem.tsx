@@ -3,7 +3,17 @@ import type { Bladeburner } from "../Bladeburner";
 import React, { useMemo } from "react";
 import { CopyableText } from "../../ui/React/CopyableText";
 import { formatBigNumber } from "../../ui/formatNumber";
-import { Box, IconButton, Paper, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import { Skill } from "../Skill";

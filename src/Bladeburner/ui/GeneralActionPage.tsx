@@ -1,7 +1,11 @@
 import type { Bladeburner } from "../Bladeburner";
 
 import * as React from "react";
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { GeneralActionElem } from "./GeneralActionElem";
 import { GeneralActions } from "../data/GeneralActions";
 

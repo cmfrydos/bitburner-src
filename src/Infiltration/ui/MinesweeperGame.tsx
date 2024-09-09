@@ -1,5 +1,21 @@
-import { Close, Flag, Report } from "@mui/icons-material";
-import { Box, Paper, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import Close from "@mui\\icons-material\\Close.js";
+// @ts-ignore
+import Flag from "@mui\\icons-material\\Flag.js";
+// @ts-ignore
+import Report from "@mui\\icons-material\\Report.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { uniqueId } from "lodash";
 import React, { useEffect, useState } from "react";
 import { AugmentationName } from "@enums";

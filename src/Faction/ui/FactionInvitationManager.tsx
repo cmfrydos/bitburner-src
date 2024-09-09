@@ -2,9 +2,21 @@ import React, { useState, useEffect } from "react";
 import { joinFaction } from "../FactionHelpers";
 import { Modal } from "../../ui/React/Modal";
 import { EventEmitter } from "../../utils/EventEmitter";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Report } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import Report from "@mui\\icons-material\\Report.js";
+// @ts-ignore
+
 import { Settings } from "../../Settings/Settings";
 import { FactionName } from "../Enums";
 import { Factions } from "../Factions";

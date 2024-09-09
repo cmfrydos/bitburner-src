@@ -4,8 +4,16 @@ import { StaneksGift } from "../StaneksGift";
 import { FragmentType, Effect } from "../FragmentType";
 import { formatPercent, formatStaneksGiftCharge, formatStaneksGiftPower } from "../../ui/formatNumber";
 
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 interface IProps {
   gift: StaneksGift;

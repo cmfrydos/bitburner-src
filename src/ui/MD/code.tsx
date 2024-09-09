@@ -1,9 +1,17 @@
 import React from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\react-syntax-highlighter\dist\esm\index.js
+// @ts-ignore
+import SyntaxHighlighter from "react-syntax-highlighter\\dist\\cjs\\default-highlight.js";
+// @ts-ignore
+
 import { monokaiSublime as theme } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { Theme } from "@mui/material/styles";
 import { CodeProps } from "react-markdown/lib/ast-to-react";
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { makeStyles } from "tss-react/mui";
 
 const useStyles = makeStyles()((theme: Theme) => ({

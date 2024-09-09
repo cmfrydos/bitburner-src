@@ -1,12 +1,28 @@
 import React, { useEffect } from "react";
 
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { ITutorialEvents } from "./ITutorialEvents";
 import { CopyableText } from "../React/CopyableText";
 
-import ListItem from "@mui/material/ListItem";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\ListItem\index.js
+// @ts-ignore
+import ListItem from "@mui\\material\\node\\ListItem\\ListItem.js";
+// @ts-ignore
+
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import HelpIcon from "@mui/icons-material/Help";

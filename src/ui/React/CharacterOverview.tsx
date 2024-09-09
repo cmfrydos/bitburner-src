@@ -2,7 +2,27 @@ import type { ActionIdentifier } from "../../Bladeburner/Types";
 
 // Root React Component for the Corporation UI
 import React, { useMemo, useState, useEffect, ReactNode } from "react";
-import { Box, Button, IconButton, Table, TableBody, TableCell, TableRow, Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+import Table from "@mui\\material\\node\\Table\\Table.js";
+// @ts-ignore
+import TableBody from "@mui\\material\\node\\TableBody\\TableBody.js";
+// @ts-ignore
+import TableCell from "@mui\\material\\node\\TableCell\\TableCell.js";
+// @ts-ignore
+import TableRow from "@mui\\material\\node\\TableRow\\TableRow.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import SaveIcon from "@mui/icons-material/Save";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import { Theme, useTheme } from "@mui/material/styles";

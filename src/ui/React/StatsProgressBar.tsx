@@ -1,6 +1,18 @@
 import * as React from "react";
-import LinearProgress from "@mui/material/LinearProgress";
-import { TableCell, Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\LinearProgress\index.js
+// @ts-ignore
+import LinearProgress from "@mui\\material\\node\\LinearProgress\\LinearProgress.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import TableCell from "@mui\\material\\node\\TableCell\\TableCell.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { useStyles } from "./CharacterOverview";
 import { ISkillProgress } from "../../PersonObjects/formulas/skill";
 import { formatExp } from "../formatNumber";

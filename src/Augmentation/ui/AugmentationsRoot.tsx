@@ -10,12 +10,36 @@ import { PurchasedAugmentations } from "./PurchasedAugmentations";
 import { SourceFilesElement } from "./SourceFiles";
 
 import { canGetBonus } from "../../ExportBonus";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Container from "@mui/material/Container";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Container\index.js
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+
 import { Settings } from "../../Settings/Settings";
 import { ConfirmationModal } from "../../ui/React/ConfirmationModal";
 import { Player } from "@player";
@@ -23,8 +47,16 @@ import { AugmentationName } from "@enums";
 import { Augmentations } from "../Augmentations";
 import { CONSTANTS } from "../../Constants";
 import { formatNumberNoSuffix } from "../../ui/formatNumber";
-import { Info } from "@mui/icons-material";
-import { Link } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import Info from "@mui\\icons-material\\Info.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Link from "@mui\\material\\node\\Link\\Link.js";
+// @ts-ignore
+
 import { AlertEvents } from "../../ui/React/AlertManager";
 import { useCycleRerender } from "../../ui/React/hooks";
 

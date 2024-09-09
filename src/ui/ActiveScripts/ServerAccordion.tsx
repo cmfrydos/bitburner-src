@@ -3,8 +3,28 @@ import type { BaseServer } from "../../Server/BaseServer";
 
 import * as React from "react";
 
-import { Box, Collapse, ListItemText, ListItemButton, Paper, Typography } from "@mui/material";
-import { ExpandMore, ExpandLess } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Collapse from "@mui\\material\\node\\Collapse\\Collapse.js";
+// @ts-ignore
+import ListItemButton from "@mui\\material\\node\\ListItemButton\\ListItemButton.js";
+// @ts-ignore
+import ListItemText from "@mui\\material\\node\\ListItemText\\ListItemText.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import ExpandLess from "@mui\\icons-material\\ExpandLess.js";
+// @ts-ignore
+import ExpandMore from "@mui\\icons-material\\ExpandMore.js";
+// @ts-ignore
+
 
 import { ServerAccordionContent } from "./ServerAccordionContent";
 

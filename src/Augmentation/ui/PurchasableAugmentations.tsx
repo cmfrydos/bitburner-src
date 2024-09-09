@@ -2,8 +2,30 @@
  * React component for displaying a single augmentation for purchase through
  * the faction UI
  */
-import { CheckCircle, NewReleases, Report } from "@mui/icons-material";
-import { Box, Button, Container, Paper, Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import CheckCircle from "@mui\\icons-material\\CheckCircle.js";
+// @ts-ignore
+import NewReleases from "@mui\\icons-material\\NewReleases.js";
+// @ts-ignore
+import Report from "@mui\\icons-material\\Report.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import React, { useEffect, useState } from "react";
 import { Faction } from "../../Faction/Faction";
 import { Player } from "@player";

@@ -3,7 +3,11 @@
  * and provides information about all of the player's scripts that are currently running
  */
 import React from "react";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { recentScripts } from "../../Netscript/RecentScripts";
 import { RecentScriptAccordion } from "./RecentScriptAccordion";

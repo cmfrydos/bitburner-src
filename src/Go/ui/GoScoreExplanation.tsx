@@ -1,5 +1,9 @@
 import React from "react";
-import { Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 
 import { Modal } from "../../ui/React/Modal";
 import { boardStyles } from "../boardState/goStyles";

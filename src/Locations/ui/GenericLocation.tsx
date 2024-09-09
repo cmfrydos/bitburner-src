@@ -5,8 +5,16 @@
  * location that is being rendered and then creates the proper component(s) for that.
  */
 import * as React from "react";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 
 import { CompanyLocation } from "./CompanyLocation";
 import { GymLocation } from "./GymLocation";
@@ -28,7 +36,11 @@ import { CorruptableText } from "../../ui/React/CorruptableText";
 import { Router } from "../../ui/GameRoot";
 import { Page } from "../../ui/Router";
 import { serverMetadata } from "../../Server/data/servers";
-import { Tooltip } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
 import { getEnumHelper } from "../../utils/EnumHelper";
 
 interface IProps {

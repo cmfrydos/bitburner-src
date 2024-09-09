@@ -4,8 +4,16 @@ import React, { useEffect } from "react";
 import { useSnackbar, SnackbarProvider as SB } from "notistack";
 import { makeStyles } from "tss-react/mui";
 import { EventEmitter } from "../../utils/EventEmitter";
-import Alert from "@mui/material/Alert";
-import Paper from "@mui/material/Paper";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Alert\index.js
+// @ts-ignore
+import Alert from "@mui\\material\\node\\Alert\\Alert.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
 import { logBoxBaseZIndex } from "./Constants";
 
 interface IProps {

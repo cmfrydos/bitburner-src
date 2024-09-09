@@ -2,7 +2,13 @@ import type { Bladeburner } from "../Bladeburner";
 import type { Action } from "../Types";
 
 import React from "react";
-import { Box, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { CopyableText } from "../../ui/React/CopyableText";
 import { createProgressBarText } from "../../utils/helpers/createProgressBarText";
 import { StartButton } from "./StartButton";
@@ -10,7 +16,13 @@ import { StopButton } from "./StopButton";
 import { TeamSizeButton } from "./TeamSizeButton";
 
 import { formatNumberNoSuffix } from "../../ui/formatNumber";
-import { BlackOperation, Operation } from "../Actions";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\src\Bladeburner\Actions\index.ts
+// @ts-ignore
+import { BlackOperation } from "C:\\Docs\\bb\\cmf\\bitburner-src\\src\\Bladeburner\\Actions\\BlackOperation.ts";
+// @ts-ignore
+import { Operation } from "C:\\Docs\\bb\\cmf\\bitburner-src\\src\\Bladeburner\\Actions\\Operation.ts";
+// @ts-ignore
+
 import { BladeburnerConstants } from "../data/Constants";
 import { convertTimeMsToTimeElapsedString } from "../../utils/StringHelperFunctions";
 

@@ -2,7 +2,11 @@ import React, { FC } from "react";
 import { Card, Suit } from "./Card";
 
 import { makeStyles } from "tss-react/mui";
-import Paper from "@mui/material/Paper";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
 
 interface Props {
   card: Card;

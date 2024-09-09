@@ -1,4 +1,10 @@
-import { Input, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Input from "@mui\\material\\node\\Input\\Input.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Modal } from "../../ui/React/Modal";
 import { styled } from "@mui/material/styles";
 import type { editor } from "monaco-editor";

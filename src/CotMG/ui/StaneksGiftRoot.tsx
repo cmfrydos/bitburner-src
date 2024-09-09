@@ -4,13 +4,25 @@ import { CONSTANTS } from "../../Constants";
 import { StaneksGiftEvents } from "../StaneksGiftEvents";
 import { MainBoard } from "./MainBoard";
 import { StaneksGift } from "../StaneksGift";
-import { Info } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import Info from "@mui\\icons-material\\Info.js";
+// @ts-ignore
+
 import { dialogBoxCreate } from "../../ui/React/DialogBox";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { ActiveFragment } from "../ActiveFragment";
 import { Fragments } from "../Fragment";
 import { DummyGrid } from "./DummyGrid";
-import Container from "@mui/material/Container";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Container\index.js
+// @ts-ignore
+import Container from "@mui\\material\\node\\Container\\Container.js";
+// @ts-ignore
+
 import { useRerender } from "../../ui/React/hooks";
 
 interface IProps {

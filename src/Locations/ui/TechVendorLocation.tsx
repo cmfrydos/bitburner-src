@@ -4,8 +4,16 @@
  * This subcomponent renders all of the buttons for purchasing things from tech vendors
  */
 import React, { useState } from "react";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 
 import { Location } from "../Location";
 import { RamButton } from "./RamButton";
@@ -18,7 +26,11 @@ import { Money } from "../../ui/React/Money";
 import { Player } from "@player";
 import { PurchaseServerModal } from "./PurchaseServerModal";
 import { formatRam } from "../../ui/formatNumber";
-import { Box } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 import { useRerender } from "../../ui/React/hooks";
 
 function ServerButton(props: { ram: number }): React.ReactElement {

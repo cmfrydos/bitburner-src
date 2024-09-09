@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import MenuItem from "@mui\\material\\node\\MenuItem\\MenuItem.js";
+// @ts-ignore
+import Select from "@mui\\material\\node\\Select\\Select.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Settings } from "../../Settings/Settings";
 import { OptionSwitch } from "../../ui/React/OptionSwitch";
 import { GameOptionsPage } from "./GameOptionsPage";

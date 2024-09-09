@@ -1,6 +1,20 @@
 import React, { useCallback } from "react";
 
-import { Accordion, AccordionSummary, AccordionDetails, Button, ButtonGroup, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Accordion from "@mui\\material\\node\\Accordion\\Accordion.js";
+// @ts-ignore
+import AccordionDetails from "@mui\\material\\node\\AccordionDetails\\AccordionDetails.js";
+// @ts-ignore
+import AccordionSummary from "@mui\\material\\node\\AccordionSummary\\AccordionSummary.js";
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+import ButtonGroup from "@mui\\material\\node\\ButtonGroup\\ButtonGroup.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { makeStyles } from "tss-react/mui";
 

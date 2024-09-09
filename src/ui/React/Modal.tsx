@@ -1,9 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Theme } from "@mui/material";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Fade from "@mui/material/Fade";
-import M from "@mui/material/Modal";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\IconButton\index.js
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Fade\index.js
+// @ts-ignore
+import Fade from "@mui\\material\\node\\Fade\\Fade.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Modal\index.js
+// @ts-ignore
+import M from "@mui\\material\\node\\Modal\\Modal.js";
+// @ts-ignore
+
 import { makeStyles } from "tss-react/mui";
 import { SxProps } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";

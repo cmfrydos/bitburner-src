@@ -6,7 +6,11 @@ import { Hashes } from "../../ui/React/Hashes";
 import { HacknetUpgradeElem } from "./HacknetUpgradeElem";
 import { Modal } from "../../ui/React/Modal";
 import { Player } from "@player";
-import Typography from "@mui/material/Typography";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { useCycleRerender } from "../../ui/React/hooks";
 
 interface IProps {

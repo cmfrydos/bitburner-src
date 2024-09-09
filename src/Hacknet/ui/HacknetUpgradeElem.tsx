@@ -11,9 +11,21 @@ import { dialogBoxCreate } from "../../ui/React/DialogBox";
 import { CopyableText } from "../../ui/React/CopyableText";
 import { Hashes } from "../../ui/React/Hashes";
 
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { SelectChangeEvent } from "@mui/material/Select";
 import { CompanyName, FactionName } from "@enums";
 import { PartialRecord } from "../../Types/Record";

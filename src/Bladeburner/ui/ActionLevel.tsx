@@ -2,12 +2,26 @@ import type { Bladeburner } from "../Bladeburner";
 import type { LevelableAction } from "../Types";
 
 import React from "react";
-import { Box, IconButton, Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 import { BladeburnerConstants } from "../data/Constants";
-import { Contract } from "../Actions";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\src\Bladeburner\Actions\index.ts
+// @ts-ignore
+import { Contract } from "C:\\Docs\\bb\\cmf\\bitburner-src\\src\\Bladeburner\\Actions\\Contract.ts";
+// @ts-ignore
+
 
 interface ActionLevelProps {
   action: LevelableAction;

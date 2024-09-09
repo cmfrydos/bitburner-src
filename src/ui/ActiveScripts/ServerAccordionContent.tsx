@@ -3,9 +3,27 @@
 import React, { useState } from "react";
 import { WorkerScript } from "../../Netscript/WorkerScript";
 import { WorkerScriptAccordion } from "./WorkerScriptAccordion";
-import { IconButton, List, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+import List from "@mui\\material\\node\\List\\List.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import { Settings } from "../../Settings/Settings";
-import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import FirstPage from "@mui\\icons-material\\FirstPage.js";
+// @ts-ignore
+import KeyboardArrowLeft from "@mui\\icons-material\\KeyboardArrowLeft.js";
+// @ts-ignore
+import KeyboardArrowRight from "@mui\\icons-material\\KeyboardArrowRight.js";
+// @ts-ignore
+import LastPage from "@mui\\icons-material\\LastPage.js";
+// @ts-ignore
+
 
 interface ServerActiveScriptsProps {
   scripts: WorkerScript[];

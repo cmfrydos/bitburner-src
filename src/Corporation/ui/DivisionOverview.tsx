@@ -1,7 +1,11 @@
 // React Component for displaying an Division's overview information
 // (top-left panel in the Division UI)
 import React, { useState } from "react";
-import { MathJax } from "better-react-mathjax";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\better-react-mathjax\esm\index.js
+// @ts-ignore
+import MathJax from "better-react-mathjax\\MathJax\\MathJax.js";
+// @ts-ignore
+
 
 import { CorpUnlockName, IndustryType } from "@enums";
 import { hireAdVert } from "../Actions";
@@ -15,14 +19,38 @@ import { StatsTable } from "../../ui/React/StatsTable";
 import { StaticModal } from "../../ui/React/StaticModal";
 import { MoneyCost } from "./MoneyCost";
 import { useCorporation, useDivision } from "./Context";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Typography\index.js
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { ButtonWithTooltip } from "../../ui/Components/ButtonWithTooltip";
-import Tooltip from "@mui/material/Tooltip";
-import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Tooltip\index.js
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Paper\index.js
+// @ts-ignore
+import Paper from "@mui\\material\\node\\Paper\\Paper.js";
+// @ts-ignore
+
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\IconButton\index.js
+// @ts-ignore
+import IconButton from "@mui\\material\\node\\IconButton\\IconButton.js";
+// @ts-ignore
+
 import HelpIcon from "@mui/icons-material/Help";
-import Box from "@mui/material/Box";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Box\index.js
+// @ts-ignore
+import Box from "@mui\\material\\node\\Box\\Box.js";
+// @ts-ignore
+
 
 function MakeProductButton(): React.ReactElement {
   const corp = useCorporation();

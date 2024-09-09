@@ -1,4 +1,14 @@
-import { FormControlLabel, Switch, Tooltip, Typography } from "@mui/material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\index.js
+// @ts-ignore
+import FormControlLabel from "@mui\\material\\node\\FormControlLabel\\FormControlLabel.js";
+// @ts-ignore
+import Switch from "@mui\\material\\node\\Switch\\Switch.js";
+// @ts-ignore
+import Tooltip from "@mui\\material\\node\\Tooltip\\Tooltip.js";
+// @ts-ignore
+import Typography from "@mui\\material\\node\\Typography\\Typography.js";
+// @ts-ignore
+
 import React, { useState } from "react";
 
 type OptionSwitchProps = {

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { BBCabinetRoot } from "./BBCabinet";
 
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { Player } from "@player";
 import { AlertEvents } from "../../ui/React/AlertManager";
 

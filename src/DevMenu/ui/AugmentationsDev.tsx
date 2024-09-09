@@ -1,6 +1,12 @@
 import { Player } from "@player";
 import React from "react";
-import { Clear, ExpandMore } from "@mui/icons-material";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\icons-material\esm\index.js
+// @ts-ignore
+import Clear from "@mui\\icons-material\\Clear.js";
+// @ts-ignore
+import ExpandMore from "@mui\\icons-material\\ExpandMore.js";
+// @ts-ignore
+
 import {
   Accordion,
   AccordionDetails,

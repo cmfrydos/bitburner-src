@@ -6,7 +6,11 @@
 import React from "react";
 
 import { PurchaseMultipliers } from "../data/Constants";
-import Button from "@mui/material/Button";
+// parsed barrel: C:\Docs\bb\cmf\bitburner-src\node_modules\@mui\material\Button\index.js
+// @ts-ignore
+import Button from "@mui\\material\\node\\Button\\Button.js";
+// @ts-ignore
+
 import { PositiveInteger } from "../../types";
 import { getRecordEntries } from "../../Types/Record";
 
