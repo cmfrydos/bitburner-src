@@ -93,16 +93,18 @@ function applyAliases(origCommand: string, depth = 0, currentlyProcessingAliases
   // First get non-global aliases, and recursively apply them
   // (unless there are any reference loops or the reference chain is too deep)
   const localAlias = Aliases.get(commandArray[0]);
-  if (localAlias && !currentlyProcessingAliases.includes(localAlias)) {
-    const appliedAlias = applyAliases(localAlias, depth + 1, [commandArray[0], ...currentlyProcessingAliases]);
+  const localrule = commandArray[0] + "->" + localAlias + "(g)";
+  if (localAlias && !currentlyProcessingAliases.includes(localrule)) {
+    const appliedAlias = applyAliases(localAlias, depth + 1, [localrule, ...currentlyProcessingAliases]);
     commandArray.splice(0, 1, ...appliedAlias.split(" "));
   }
 
   // Once local aliasing is complete (or if none are present) handle any global aliases
   const processedCommands = commandArray.reduce((resolvedCommandArray: string[], command) => {
     const globalAlias = GlobalAliases.get(command);
-    if (globalAlias && !currentlyProcessingAliases.includes(globalAlias)) {
-      const appliedAlias = applyAliases(globalAlias, depth + 1, [command, ...currentlyProcessingAliases]);
+    const rule = command + "->" + globalAlias + "(g)";
+    if (globalAlias && !currentlyProcessingAliases.includes(rule)) {
+      const appliedAlias = applyAliases(globalAlias, depth + 1, [rule, ...currentlyProcessingAliases]);
       resolvedCommandArray.push(appliedAlias);
     } else {
       // If there is no alias, or if the alias has a circular reference, leave the command as-is
