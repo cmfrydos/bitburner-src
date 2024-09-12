@@ -83,7 +83,7 @@ export function substituteAliases(origCommand: string): string {
  * @param currentlyProcessingAliases any aliases that have been applied in the recursive evaluation leading to this point
  * @return { string } the provided command with all of its referenced aliases evaluated
  */
-function applyAliases(origCommand: string, depth = 0, currentlyProcessingAliases: string[] = []) {
+function applyAliases(origCommand: string, depth = 0, currentlyProcessingAliases: Set<string> = new Set()) {
   if (!origCommand) {
     return origCommand;
   }
@@ -98,17 +98,17 @@ function applyAliases(origCommand: string, depth = 0, currentlyProcessingAliases
   // (unless there are any reference loops or the reference chain is too deep)
   const localAlias = Aliases.get(commandArray[0]);
   const localrule = commandArray[0] + "->" + localAlias + "(l)";
-  if (localAlias && !currentlyProcessingAliases.includes(localrule)) {
-    const appliedAlias = applyAliases(localAlias, depth + 1, [localrule, ...currentlyProcessingAliases]);
+  if (localAlias && !currentlyProcessingAliases.has(localrule)) {
+    const appliedAlias = applyAliases(localAlias, depth + 1, new Set([localrule, ...currentlyProcessingAliases]));
     commandArray.splice(0, 1, ...appliedAlias.split(" "));
   }
 
   // Once local aliasing is complete (or if none are present) handle any global aliases
   const processedCommands = commandArray.reduce((resolvedCommandArray: string[], command) => {
     const globalAlias = GlobalAliases.get(command);
-    const rule = command + "->" + globalAlias + "(g)";
-    if (globalAlias && !currentlyProcessingAliases.includes(rule)) {
-      const appliedAlias = applyAliases(globalAlias, depth + 1, [rule, ...currentlyProcessingAliases]);
+    const globalrule = command + "->" + globalAlias + "(g)";
+    if (globalAlias && !currentlyProcessingAliases.has(globalrule)) {
+      const appliedAlias = applyAliases(globalAlias, depth + 1, new Set([globalrule, ...currentlyProcessingAliases]));
       resolvedCommandArray.push(appliedAlias);
     } else {
       // If there is no alias, or if the alias has a circular reference, leave the command as-is

@@ -43,12 +43,20 @@ describe("substituteAliases Tests", () => {
     expect(result).toEqual("'a'");
   });
 
-  it("Should not substitute quoted commands III", () => {
+  it.skip("Should not substitute quoted commands III", () => {
     parseAliasDeclaration("a=b");
     parseAliasDeclaration("b='c'");
     parseAliasDeclaration("c=d");
     const result = substituteAliases("a");
-    //expect(result).toEqual("'c'"); // Currently FAILS
+    expect(result).toEqual("'c'");
+  });
+
+  it.skip("Should not substitute quoted commands IV", () => {
+    parseAliasDeclaration("a=b");
+    parseAliasDeclaration('b="c"');
+    parseAliasDeclaration("c=d");
+    const result = substituteAliases("a");
+    expect(result).toEqual('"c"');
   });
 
   it("Should only change local aliases if they are the start of the command", () => {
