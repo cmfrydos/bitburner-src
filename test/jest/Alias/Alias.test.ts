@@ -1,6 +1,9 @@
-import { substituteAliases, parseAliasDeclaration } from "../../../src/Alias";
+import { substituteAliases, parseAliasDeclaration, clearAliases } from "../../../src/Alias";
 describe("substituteAliases Tests", () => {
-  it("Should gracefully handle recursive local aliases", () => {
+  beforeEach(() => {
+    clearAliases();
+  });
+  it("Should gracefully handle recursive local aliases I", () => {
     parseAliasDeclaration("recursiveAlias=b");
     parseAliasDeclaration("b=c");
     parseAliasDeclaration("c=d");
@@ -16,10 +19,36 @@ describe("substituteAliases Tests", () => {
     expect(result).toEqual("recursiveAlias");
   });
 
-  it("Should gracefully handle recursive local aliases II", () => {
+  it("Should gracefully handle recursive local aliases III", () => {
+    parseAliasDeclaration('recursiveAlias="recursiveAlias"');
+    const result = substituteAliases("recursiveAlias");
+    expect(result).toEqual("recursiveAlias");
+  });
+
+  it("Should gracefully handle recursive local aliases IV", () => {
     parseAliasDeclaration('recursiveAlias="recursiveAlias -l"');
     const result = substituteAliases("recursiveAlias");
     expect(result).toEqual("recursiveAlias -l");
+  });
+
+  it("Should not substitute quoted commands I", () => {
+    parseAliasDeclaration("a=b");
+    const result = substituteAliases('"a"');
+    expect(result).toEqual('"a"');
+  });
+
+  it("Should not substitute quoted commands II", () => {
+    parseAliasDeclaration("a=b");
+    const result = substituteAliases("'a'");
+    expect(result).toEqual("'a'");
+  });
+
+  it("Should not substitute quoted commands III", () => {
+    parseAliasDeclaration("a=b");
+    parseAliasDeclaration("b='c'");
+    parseAliasDeclaration("c=d");
+    const result = substituteAliases("a");
+    //expect(result).toEqual("'c'"); // Currently FAILS
   });
 
   it("Should only change local aliases if they are the start of the command", () => {

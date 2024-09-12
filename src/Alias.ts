@@ -62,9 +62,13 @@ export function removeAlias(name: string): boolean {
   return hadAlias;
 }
 
+export function clearAliases(): void {
+  Aliases.clear();
+  GlobalAliases.clear();
+}
+
 /**
  * Returns the original string with any aliases substituted in.
- * Aliases are only applied to "whole words", one level deep
  * @param origCommand the original command string
  */
 export function substituteAliases(origCommand: string): string {
